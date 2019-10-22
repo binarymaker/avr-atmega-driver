@@ -18,8 +18,8 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef MAIN_351c805e_f499_11e9_8642_705a0f25cb51
-#define MAIN_351c805e_f499_11e9_8642_705a0f25cb51
+#ifndef MAIN_2b60f7ba_f4a1_11e9_b2e4_705a0f25cb51
+#define MAIN_2b60f7ba_f4a1_11e9_b2e4_705a0f25cb51
 
 #ifdef __cplusplus
  extern "C" {
@@ -43,5 +43,5 @@
 }
 #endif
 
-#endif /* MAIN_351c805e_f499_11e9_8642_705a0f25cb51 */
+#endif /* MAIN_2b60f7ba_f4a1_11e9_b2e4_705a0f25cb51 */
 
