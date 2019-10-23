@@ -18,40 +18,30 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef DIO_7131a280_f4a5_11e9_a451_705a0f25cb51
-#define DIO_7131a280_f4a5_11e9_a451_705a0f25cb51
-
-#ifdef __cplusplus
- extern "C" {
-#endif
-
-/**
- * \brief Source file version tag
- *        
- *        version info: [15:8] main [7:0] beta
- */
-#define __DIO_VERSION      (0x0001u)
+#define F_CPU 8000000
 
 /* Includes ------------------------------------------------------------------*/
+#include <avr/io.h>
+#include <util/delay.h>
+#include "dio.h"
 #include "dio-cfg.h"
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
 
-
-void
-DIO_Init(const DioConfig_st * const config);
-
-void
-DIO_ChannelConfig(const DioConfig_st * const config);
-
-void
-DIO_ChannelWrite(DioChannel_et channel, DioPinState pinState);
-
-#ifdef __cplusplus
+int
+main()
+{
+  DIO_Init(dioConfig);
+  while(1)
+  {
+    PORTC = 0x00;
+    _delay_ms(100);
+    PORTC = 0xff;
+    _delay_ms(100);
+  }
+  return 0;
 }
-#endif
-
-#endif /* DIO_7131a280_f4a5_11e9_a451_705a0f25cb51 */
-
