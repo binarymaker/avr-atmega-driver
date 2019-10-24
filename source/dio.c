@@ -154,19 +154,79 @@ DIO_ChannelRead(DioChannel_et channel)
   
   if (BIT_IS_CLEAR(*PORT_DATA_IN[config.port], config.pin))
   {
-    return DIO_PINSTATE_LOW;
+    return (DIO_PINSTATE_LOW);
   }
   
-  return DIO_PINSTATE_HIGH;
+  return (DIO_PINSTATE_HIGH);
   
 }
 
-void
+DioPinState_et
 Dio_ChannelToggle(DioChannel_et channel)
 {
   DioConfig_st config;
 
   memcpy_P(&config, &_channelConfigList[channel], sizeof(config));
   BIT_TOGGLE(*PORT_DATA_OUT[config.port], config.pin);
+
+  if (BIT_IS_CLEAR(*PORT_DATA_IN[config.port], config.pin))
+  {
+    return (DIO_PINSTATE_LOW);
+  }
   
+  return (DIO_PINSTATE_HIGH); 
+}
+
+/* Port - Access functions ###################################################*/
+void
+DIO_PortWrite(DioPort_et port, DioPortValue_t value)
+{
+  REG_WRITE(*PORT_DATA_OUT[port], value);
+}
+
+DioPortValue_t
+DIO_PortRead(DioPort_et port)
+{
+  return (REG_READ(*PORT_DATA_IN[port]));
+}
+
+/* Pin - Access functions ####################################################*/
+
+void
+DIO_PinWrite(DioPort_et port, DioPin_et pin, DioPinState_et pinState)
+{
+  switch(pinState)
+  {
+    case DIO_PINSTATE_LOW:
+      BIT_CLEAR(*PORT_DATA_OUT[port], pin);
+      break;
+    case DIO_PINSTATE_HIGH:
+      BIT_SET(*PORT_DATA_OUT[port], pin);
+      break;
+    default:
+      break;
+  }
+}
+
+DioPinState_et
+DIO_PinRead(DioPort_et port, DioPin_et pin)
+{
+  if (BIT_IS_CLEAR(*PORT_DATA_IN[port], pin))
+  {
+    return (DIO_PINSTATE_LOW);
+  }
+  return (DIO_PINSTATE_HIGH);
+}
+
+DioPinState_et
+DIO_PinToggle(DioPort_et port, DioPin_et pin)
+{
+  BIT_TOGGLE(*PORT_DATA_OUT[port], pin);
+
+  if (BIT_IS_CLEAR(*PORT_DATA_IN[port], pin))
+  {
+    return (DIO_PINSTATE_LOW);
+  }
+  
+  return (DIO_PINSTATE_HIGH); 
 }

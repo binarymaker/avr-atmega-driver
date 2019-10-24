@@ -89,14 +89,16 @@ typedef enum
   NUM_DIO_PIN_STATE
 }DioPinState_et;
 
+typedef uint8_t DioPortValue_t;
+
 typedef struct
 {
-  const DioPort_et      port      ;
-  const DioPin_et       pin       ;
-  const DioDirection_et direction ;
-  const DioResistor_et  resistor  ;
-  const DioMode_et      function  ;
-  const DioPinState_et  pinState  ;
+  DioPort_et      port      ;
+  DioPin_et       pin       ;
+  DioDirection_et direction ;
+  DioResistor_et  resistor  ;
+  DioMode_et      function  ;
+  DioPinState_et  pinState  ;
 } DioConfig_st;
 
 /* Exported constants --------------------------------------------------------*/

@@ -47,15 +47,34 @@ void
 DIO_ChannelConfig(const DioConfig_st * const config);
 
 
-/* Access functions ##########################################################*/
+/* Channel - Access functions ################################################*/
+
 void
 DIO_ChannelWrite(DioChannel_et channel, DioPinState_et pinState);
 
 DioPinState_et
-DIO_ChannelRead(DioChannel_et chennal);
+DIO_ChannelRead(DioChannel_et channel);
+
+DioPinState_et
+Dio_ChannelToggle(DioChannel_et channel);
+
+/* Port - Access functions ###################################################*/
+void
+DIO_PortWrite(DioPort_et port, DioPortValue_t value);
+
+DioPortValue_t
+DIO_PortRead(DioPort_et port);
+
+/* Pin - Access functions ####################################################*/
 
 void
-Dio_ChannelToggle(DioChannel_et channel);
+DIO_PinWrite(DioPort_et port, DioPin_et pin, DioPinState_et pinState);
+
+DioPinState_et
+DIO_PinRead(DioPort_et port, DioPin_et pin);
+
+DioPinState_et
+DIO_PinToggle(DioPort_et port, DioPin_et pin);
 
 #ifdef __cplusplus
 }
