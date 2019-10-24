@@ -36,7 +36,6 @@ typedef enum
   NUM_DIO_CHANNEL
 }DioChannel_et;
 
-
 typedef enum
 {
   DIO_PORTB,
@@ -57,12 +56,6 @@ typedef enum
   DIO_PIN_7,
   NUM_DIO_CHANNEL_PER_PORT
 }DioPin_et;
-
-typedef struct 
-{
-  const DioPort_et port ;
-  const DioPin_et  pin  ;
-}DioPortPinConfig_st;
 
 typedef enum
 {
@@ -91,19 +84,19 @@ typedef enum
 
 typedef enum
 {
-  DIO_PIN_LOW,
-  DIO_PIN_HIGH,
+  DIO_PINSTATE_LOW,
+  DIO_PINSTATE_HIGH,
   NUM_DIO_PIN_STATE
-}DioPinState;
+}DioPinState_et;
 
 typedef struct
 {
-  const DioPort_et port ;
-  const DioPin_et  pin  ;
-  const DioDirection_et     direction;
-  const DioResistor_et      resistor ;
-  const DioMode_et          function ;
-  const DioPinState         pinState ;
+  const DioPort_et      port      ;
+  const DioPin_et       pin       ;
+  const DioDirection_et direction ;
+  const DioResistor_et  resistor  ;
+  const DioMode_et      function  ;
+  const DioPinState_et  pinState  ;
 } DioConfig_st;
 
 /* Exported constants --------------------------------------------------------*/

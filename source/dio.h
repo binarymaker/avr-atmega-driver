@@ -39,15 +39,33 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-
+/* Configuration Settings ####################################################*/
 void
 DIO_Init(const DioConfig_st * const config);
 
 void
 DIO_ChannelConfig(const DioConfig_st * const config);
 
+/*
 void
-DIO_ChannelWrite(DioChannel_et channel, DioPinState pinState);
+DIO_ChannelModeSet(DioChannel_et channel, DioMode_et function);
+
+void
+DIO_ChannelDirectionSet(DioChannel_et channel, DioDirection_et direction);
+
+void
+DIO_ChannelResistorSet(DioChannel_et channel, DioResistor_et resistor);
+*/
+
+/* Access functions ##########################################################*/
+void
+DIO_ChannelWrite(DioChannel_et channel, DioPinState_et pinState);
+
+DioPinState_et
+DIO_ChannelRead(DioChannel_et chennal);
+
+void
+Dio_ChannelToggle(DioChannel_et channel);
 
 #ifdef __cplusplus
 }

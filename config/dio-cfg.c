@@ -25,6 +25,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+
 const DioConfig_st dioConfig[NUM_DIO_CHANNEL] PROGMEM =
 {
   /* ------------------------------------------ Channel ID-0 : Name-CH0 ------*/
@@ -34,7 +35,7 @@ const DioConfig_st dioConfig[NUM_DIO_CHANNEL] PROGMEM =
     DIO_DIRECTION_OUTPUT,    
     DIO_RESISTOR_DISABLE, 
     DIO_MODE_GPIO,
-    DIO_PIN_LOW 
+    DIO_PINSTATE_LOW
   },
   /* ------------------------------------------ Channel ID-1 : Name-CH1 ------*/
   { 
@@ -43,16 +44,16 @@ const DioConfig_st dioConfig[NUM_DIO_CHANNEL] PROGMEM =
     DIO_DIRECTION_OUTPUT,
     DIO_RESISTOR_DISABLE, 
     DIO_MODE_GPIO,
-    DIO_PIN_LOW 
+    DIO_PINSTATE_LOW 
   },
   /* ------------------------------------------ Channel ID-2 : Name-CH2 ------*/
   { 
     DIO_PORTC,
     DIO_PIN_3,
-    DIO_DIRECTION_OUTPUT,
-    DIO_RESISTOR_DISABLE, 
+    DIO_DIRECTION_INPUT,
+    DIO_RESISTOR_PULLUP, 
     DIO_MODE_GPIO,
-    DIO_PIN_LOW 
+    DIO_PINSTATE_HIGH 
   }
 };
 /* Private function prototypes -----------------------------------------------*/

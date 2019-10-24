@@ -25,6 +25,7 @@
 #include <util/delay.h>
 #include "dio.h"
 #include "dio-cfg.h"
+#include "regctrl.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -38,10 +39,17 @@ main()
   DIO_Init(dioConfig);
   while(1)
   {
-    PORTC = 0x00;
-    _delay_ms(100);
-    PORTC = 0xff;
-    _delay_ms(100);
+    DioPinState_et state = DIO_ChannelRead(CH2);
+    if (DIO_PINSTATE_LOW == state)
+    {/*
+      DIO_ChannelWrite(CH0, DIO_PINSTATE_LOW);
+      _delay_ms(100);
+      DIO_ChannelWrite(CH0, DIO_PINSTATE_HIGH);
+      _delay_ms(100);
+      */
+      Dio_ChannelToggle(CH1);
+      _delay_ms(1000);
+    }
   }
   return 0;
 }

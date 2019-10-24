@@ -49,37 +49,124 @@ static SFR volatile * const PORT_DIRECTION[NUM_DIO_PORTS] =
   (SFR*)&DDRC,
   (SFR*)&DDRD
 };
+
+static const DioConfig_st * _channelConfigList;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
 void
 DIO_Init(const DioConfig_st * const config)
 {
-  uint8_t chn;
+  uint8_t chn_u8;
   DioConfig_st cfg;
   
-  for (chn = 0; chn < NUM_DIO_CHANNEL; chn++)
+  _channelConfigList = config;
+  
+  for (chn_u8 = 0; chn_u8 < NUM_DIO_CHANNEL; chn_u8++)
   {
-    memcpy_P(&cfg, &config[chn], sizeof(cfg));
-    switch (cfg.direction)
-    {
-      case DIO_DIRECTION_OUTPUT:
-        BIT_SET(
-                *PORT_DIRECTION[cfg.port],
-                cfg.pin
-                );
-        break;
-      case DIO_DIRECTION_INPUT:
-        BIT_CLEAR(
-                  *PORT_DIRECTION[cfg.port],
-                   cfg.pin
-                  );
-        break;
-      default:
-        break;
-    }
+    memcpy_P(&cfg, &config[chn_u8], sizeof(cfg));
+    DIO_ChannelConfig(&cfg);
   }
 }
 
 void
-DIO_ChannelWrite(DioChannel_et channel, DioPinState pinState);
+DIO_ChannelConfig(const DioConfig_st * const config)
+{
+  /* Mini map
+   * !
+   * +-- Direction == Input
+   * |   +-- Resistor config 
+   * +-- Direction == output
+   *     +-- Pin state config
+   */
+  switch (config->direction)
+  {
+    /*----------------------------------------------------------- Input config*/
+    case DIO_DIRECTION_INPUT:
+      
+      BIT_CLEAR(*PORT_DIRECTION[config->port], config->pin);
+      /*------------------------------------------------------ Resistor config*/
+        switch (config->resistor)
+        {
+          case DIO_RESISTOR_PULLUP:
+            BIT_CLEAR(MCUCR, PUD);
+            BIT_SET(*PORT_DATA_OUT[config->port], config->pin);
+            break;
+          case DIO_RESISTOR_DISABLE:
+            BIT_CLEAR(*PORT_DATA_OUT[config->port], config->pin);
+            break;
+          default:
+            break;
+        }
+        
+      break;
+      
+    /*---------------------------------------------------------- Output config*/
+    case DIO_DIRECTION_OUTPUT:
+      /*-----------------------------------------------Initial pin state config*/
+      BIT_SET(*PORT_DIRECTION[config->port], config->pin);
+      
+        switch (config->pinState)
+        {
+          case DIO_PINSTATE_LOW:
+            BIT_CLEAR(*PORT_DATA_OUT[config->port], config->pin);
+            break;
+          case DIO_PINSTATE_HIGH:
+            BIT_SET(*PORT_DATA_OUT[config->port], config->pin);
+            break;
+          default:
+            break;
+        }
+      
+      break;
+      
+    default:
+      break;
+  }   
+}
+
+void
+DIO_ChannelWrite(DioChannel_et channel, DioPinState_et pinState)
+{
+  DioConfig_st config;
+  
+  memcpy_P(&config, &_channelConfigList[channel], sizeof(config));
+  
+  switch(pinState)
+  {
+    case DIO_PINSTATE_LOW:
+      BIT_CLEAR(*PORT_DATA_OUT[config.port], config.pin);
+      break;
+    case DIO_PINSTATE_HIGH:
+      BIT_SET(*PORT_DATA_OUT[config.port], config.pin);
+      break;
+    default:
+      break;
+  }
+}
+
+DioPinState_et
+DIO_ChannelRead(DioChannel_et channel)
+{
+  DioConfig_st config;
+  
+  memcpy_P(&config, &_channelConfigList[channel], sizeof(config));
+  
+  if (BIT_IS_CLEAR(*PORT_DATA_IN[config.port], config.pin))
+  {
+    return DIO_PINSTATE_LOW;
+  }
+  
+  return DIO_PINSTATE_HIGH;
+  
+}
+
+void
+Dio_ChannelToggle(DioChannel_et channel)
+{
+  DioConfig_st config;
+
+  memcpy_P(&config, &_channelConfigList[channel], sizeof(config));
+  BIT_TOGGLE(*PORT_DATA_OUT[config.port], config.pin);
+  
+}
