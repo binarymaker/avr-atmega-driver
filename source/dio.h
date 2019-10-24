@@ -46,16 +46,6 @@ DIO_Init(const DioConfig_st * const config);
 void
 DIO_ChannelConfig(const DioConfig_st * const config);
 
-/*
-void
-DIO_ChannelModeSet(DioChannel_et channel, DioMode_et function);
-
-void
-DIO_ChannelDirectionSet(DioChannel_et channel, DioDirection_et direction);
-
-void
-DIO_ChannelResistorSet(DioChannel_et channel, DioResistor_et resistor);
-*/
 
 /* Access functions ##########################################################*/
 void

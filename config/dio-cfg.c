@@ -30,30 +30,30 @@ const DioConfig_st dioConfig[NUM_DIO_CHANNEL] PROGMEM =
 {
   /* ------------------------------------------ Channel ID-0 : Name-CH0 ------*/
   { 
-    DIO_PORTC, 
-    DIO_PIN_0,
-    DIO_DIRECTION_OUTPUT,    
-    DIO_RESISTOR_DISABLE, 
-    DIO_MODE_GPIO,
-    DIO_PINSTATE_LOW
+    .port      = DIO_PORTC, 
+    .pin       = DIO_PIN_0,
+    .direction = DIO_DIRECTION_OUTPUT,    
+    .resistor  = DIO_RESISTOR_DISABLE, 
+    .function  = DIO_MODE_GPIO,
+    .pinState  = DIO_PINSTATE_LOW
   },
   /* ------------------------------------------ Channel ID-1 : Name-CH1 ------*/
   { 
-    DIO_PORTC, 
-    DIO_PIN_1,
-    DIO_DIRECTION_OUTPUT,
-    DIO_RESISTOR_DISABLE, 
-    DIO_MODE_GPIO,
-    DIO_PINSTATE_LOW 
+    .port      = DIO_PORTC,
+    .pin       = DIO_PIN_1,
+    .direction = DIO_DIRECTION_OUTPUT,
+    .resistor  = DIO_RESISTOR_DISABLE,
+    .function  = DIO_MODE_GPIO,
+    .pinState  = DIO_PINSTATE_LOW
   },
   /* ------------------------------------------ Channel ID-2 : Name-CH2 ------*/
   { 
-    DIO_PORTC,
-    DIO_PIN_3,
-    DIO_DIRECTION_INPUT,
-    DIO_RESISTOR_PULLUP, 
-    DIO_MODE_GPIO,
-    DIO_PINSTATE_HIGH 
+    .port      = DIO_PORTC,
+    .pin       = DIO_PIN_3,
+    .direction = DIO_DIRECTION_INPUT,
+    .resistor  = DIO_RESISTOR_DISABLE,
+    .function  = DIO_MODE_GPIO,
+    .pinState  = DIO_PINSTATE_LOW
   }
 };
 /* Private function prototypes -----------------------------------------------*/
