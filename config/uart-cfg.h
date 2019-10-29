@@ -18,91 +18,93 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef DIO_715e6b5c_f4a5_11e9_b4bc_705a0f25cb51
-#define DIO_715e6b5c_f4a5_11e9_b4bc_705a0f25cb51
+#ifndef UART_68f839f0_fa05_11e9_a26e_0c5b8f279a64
+#define UART_68f839f0_fa05_11e9_a26e_0c5b8f279a64
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "stdint.h"
 #include <avr/pgmspace.h>
 /* Exported types ------------------------------------------------------------*/
 typedef enum
 {
-  CH0,
-  UART_RX,
-  UART_TX,
-  NUM_DIO_CHANNEL
-}DioChannel_et;
+  UART_CH_0,
+  NUM_UART_CHANNEL
+}UartChannel_et;
 
 typedef enum
 {
-  DIO_PORTB,
-  DIO_PORTC,
-  DIO_PORTD,
-  NUM_DIO_PORTS
-}DioPort_et;
+  UART0,
+  NUM_UART_PORTS
+}UartPort_et;
 
 typedef enum
 {
-  DIO_PIN_0,
-  DIO_PIN_1,
-  DIO_PIN_2,
-  DIO_PIN_3,
-  DIO_PIN_4,
-  DIO_PIN_5,
-  DIO_PIN_6,
-  DIO_PIN_7,
-  NUM_DIO_CHANNEL_PER_PORT
-}DioPin_et;
+  UART_BAUDRATE_110,
+  UART_BAUDRATE_300,
+  UART_BAUDRATE_600,
+  UART_BAUDRATE_1200,
+  UART_BAUDRATE_2400,
+  UART_BAUDRATE_4800,
+  UART_BAUDRATE_9600,
+  UART_BAUDRATE_14400,
+  UART_BAUDRATE_19200,
+  UART_BAUDRATE_38400,
+  UART_BAUDRATE_57600,
+  UART_BAUDRATE_115200,
+  UART_BAUDRATE_128000,
+  UART_BAUDRATE_256000,
+  NUM_UART_BAUDRATE
+}UartBaudRate_et;
 
 typedef enum
 {
-  DIO_DIRECTION_INPUT,
-  DIO_DIRECTION_OUTPUT,
-  NUM_DIO_DIRECTION
-}DioDirection_et;
+  UART_DATABITS_5,
+  UART_DATABITS_6,
+  UART_DATABITS_7,
+  UART_DATABITS_8,
+  UART_DATABITS_9,
+  NUM_UART_DATABITS
+}UartDataBits_et;
 
 typedef enum
 {
-  DIO_RESISTOR_PULLUP,
-  DIO_RESISTOR_DISABLE,
-  NUM_DIO_RESISTOR
-}DioResistor_et;
+  UART_STOPBITS_1,
+  UART_STOPBITS_2,
+  NUM_UART_STOPBITS
+}UartStopBits_et;
 
 typedef enum
 {
-  DIO_MODE_GPIO,
-  DIO_MODE_ANALOG,
-  DIO_MODE_UART,
-  DIO_MODE_I2C,
-  DIO_MODE_SPI,
-  DIO_MODE_PWM,
-  NUM_DIO_MODE
-}DioMode_et;
+  UART_PARITY_DISABLE,
+  UART_PARITY_EVEN,
+  UART_PARITY_ODD,
+  NUM_UART_PARITY
+}UartParity_et;
 
 typedef enum
 {
-  DIO_PINSTATE_LOW,
-  DIO_PINSTATE_HIGH,
-  NUM_DIO_PIN_STATE
-}DioPinState_et;
+  UART_COM_MODE_TRANSMIT_ONLY,
+  UART_COM_MODE_RECEIVE_ONLY,
+  UART_COM_MODE_TRANSMIT_RECEIVE,
+  NUM_UART_MODE
+}UartComMode_et;
 
-typedef uint8_t DioPortValue_t;
-
-typedef struct
+typedef struct 
 {
-  DioPort_et      port      ;
-  DioPin_et       pin       ;
-  DioDirection_et direction ;
-  DioResistor_et  resistor  ;
-  DioMode_et      function  ;
-  DioPinState_et  pinState  ;
-} DioConfig_st;
+  UartPort_et     port     ;
+  uint32_t        baudRate ;
+  UartDataBits_et dataBits ;
+  UartStopBits_et stopBits ;
+  UartParity_et   parity   ;
+  UartComMode_et  comMode  ;
+}UartConfig_st;
 
 /* Exported constants --------------------------------------------------------*/
-extern const DioConfig_st dioConfig[NUM_DIO_CHANNEL] PROGMEM;
+extern const UartConfig_st uartConfig[NUM_UART_CHANNEL] PROGMEM;
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
@@ -111,5 +113,5 @@ extern const DioConfig_st dioConfig[NUM_DIO_CHANNEL] PROGMEM;
 }
 #endif
 
-#endif /* DIO_715e6b5c_f4a5_11e9_b4bc_705a0f25cb51 */
+#endif /* UART_68f839f0_fa05_11e9_a26e_0c5b8f279a64 */
 

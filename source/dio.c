@@ -103,7 +103,7 @@ DIO_ChannelConfig(const DioConfig_st * const config)
       
     /*---------------------------------------------------------- Output config*/
     case DIO_DIRECTION_OUTPUT:
-      /*-----------------------------------------------Initial pin state config*/
+      /*--------------------------------------------- Initial pin state config*/
       BIT_SET(*PORT_DIRECTION[config->port], config->pin);
       
         switch (config->pinState)
