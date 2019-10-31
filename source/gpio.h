@@ -33,11 +33,29 @@
 #define __GPIO_VERSION      (0x0001u)
 
 /* Includes ------------------------------------------------------------------*/
+#include "common-def.h"
+#include "pin-manager.h"
 /* Exported types ------------------------------------------------------------*/
+typedef enum
+{
+  GPIO_PIN_INPUT = 0,
+  GPIO_PIN_OUTPUT
+}pinDirection_et;
+
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+void
+GPIO_PinDirection(pin_et pin, pinDirection_et dir);
 
+void
+GPIO_PinWrite(pin_et pin, state_et state);
+
+state_et
+GPIO_PinRead(pin_et pin);
+
+void
+GPIO_PinToggle(pin_et pin);
 
 #ifdef __cplusplus
 }

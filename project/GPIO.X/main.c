@@ -18,32 +18,31 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef MCU_a1c3b80c_fb96_11e9_887f_0c5b8f279a64
-#define MCU_a1c3b80c_fb96_11e9_887f_0c5b8f279a64
-
-#ifdef __cplusplus
- extern "C" {
-#endif
-
-/**
- * \brief Source file version tag
- *        
- *        version info: [15:8] main [7:0] beta
- */
-#define __MCU_VERSION      (0x0001u)
-
 /* Includes ------------------------------------------------------------------*/
-#include <avr/io.h>
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-#define F_CPU                                                         8000000UL
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
+#include "mcu.h"
+#include "delay.h"
+#include "gpio.h"
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
 
-
-#ifdef __cplusplus
+int
+main()
+{
+  GPIO_PinDirection(P_C0, GPIO_PIN_OUTPUT);
+  GPIO_PinDirection(P_C1,GPIO_PIN_OUTPUT);
+  while(1)
+  {
+    
+    GPIO_PinToggle(P_C1);
+    
+    GPIO_PinWrite(P_C0, LOW);
+    DELAY_ms(100);
+    GPIO_PinWrite(P_C0, HIGH);
+    DELAY_ms(100);
+  }
+  return 0;
 }
-#endif
-
-#endif /* MCU_a1c3b80c_fb96_11e9_887f_0c5b8f279a64 */
-

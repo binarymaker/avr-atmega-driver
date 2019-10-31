@@ -39,7 +39,9 @@
 #define _STATIC_INLINE_  static inline         /*!< static inline combination for \
                                                                 inline function */
 
-#define SFR                 uint8_t
+#define NULL    0
+     
+typedef uint8_t SFR;
 
 #ifdef __cplusplus
 }
