@@ -33,11 +33,21 @@
 #define __DELAY_VERSION      (0x0001u)
 
 /* Includes ------------------------------------------------------------------*/
+#include "mcu.h"
+#include "stdint.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
+void
+DELAY_us(uint32_t time_us);
+
+void
+DELAY_ms(uint32_t time_ms);
+
+void
+DELAY_sec(uint32_t time_sec);
 
 #ifdef __cplusplus
 }

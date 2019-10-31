@@ -21,17 +21,18 @@ PATH:=C:/Program Files (x86)/Microchip/MPLABX/v5.25/mplab_platform/platform/../m
 # Path to java used to run MPLAB X when this makefile was created
 MP_JAVA_PATH="C:\Program Files (x86)\Microchip\MPLABX\v5.25\sys\java\jre1.8.0_181/bin/"
 OS_CURRENT="$(shell uname -s)"
-MP_CC="C:\Program Files (x86)\Microchip\xc8\v2.10\bin\xc8-cc.exe"
-# MP_CPPC is not defined
+MP_CC="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin\avr-gcc.exe"
+MP_CPPC="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin\avr-g++.exe"
 # MP_BC is not defined
-MP_AS="C:\Program Files (x86)\Microchip\xc8\v2.10\bin\xc8-cc.exe"
-MP_LD="C:\Program Files (x86)\Microchip\xc8\v2.10\bin\xc8-cc.exe"
-MP_AR="C:\Program Files (x86)\Microchip\xc8\v2.10\bin\xc8-ar.exe"
+MP_AS="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin\avr-as.exe"
+MP_LD="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin\avr-ld.exe"
+MP_AR="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin\avr-ar.exe"
 DEP_GEN=${MP_JAVA_PATH}java -jar "C:/Program Files (x86)/Microchip/MPLABX/v5.25/mplab_platform/platform/../mplab_ide/modules/../../bin/extractobjectdependencies.jar"
-MP_CC_DIR="C:\Program Files (x86)\Microchip\xc8\v2.10\bin"
-# MP_CPPC_DIR is not defined
+MP_CC_DIR="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin"
+MP_CPPC_DIR="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin"
 # MP_BC_DIR is not defined
-MP_AS_DIR="C:\Program Files (x86)\Microchip\xc8\v2.10\bin"
-MP_LD_DIR="C:\Program Files (x86)\Microchip\xc8\v2.10\bin"
-MP_AR_DIR="C:\Program Files (x86)\Microchip\xc8\v2.10\bin"
+MP_AS_DIR="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin"
+MP_LD_DIR="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin"
+MP_AR_DIR="C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\bin"
 # MP_BC_DIR is not defined
+DFP_DIR="C:/Program Files (x86)/Microchip/MPLABX/v5.25/packs/Microchip/ATmega_DFP/2.0.12"

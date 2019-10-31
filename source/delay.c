@@ -19,6 +19,8 @@
   \endcond*/
 
 /* Includes ------------------------------------------------------------------*/
+#include "delay.h"
+#include <util/delay.h>
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -26,3 +28,28 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
+void
+DELAY_us(uint32_t time_us){
+  while(time_us--)
+  {
+    _delay_us(1);
+  }
+}
+
+void
+DELAY_ms(uint32_t time_ms)
+{
+  while(time_ms--)
+  {
+    _delay_ms(1);
+  }
+}
+
+void
+DELAY_sec(uint32_t time_sec)
+{
+  while(time_sec--)
+  {
+    DELAY_ms(1000);
+  }
+}
