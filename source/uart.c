@@ -144,7 +144,7 @@ UART_ChannelConfig(const UartConfig_st * const config)
   /* Num of stop bit selection */
   switch (config->stopBits)
   {
-    case (UART_STOPBITS_1):
+    case (UART_STOPBITS_1): 
       BIT_CLEAR(*CONTROL_STATUS_C_REG[port], USBS0);
       break;
     case (UART_STOPBITS_2):
@@ -229,4 +229,75 @@ UART_Receive(UartChannel_et uart, uint8_t *data, uint32_t size, time_t timeout)
     data[i_i32] = (uint8_t)*DATA_REGISTOR[cfg.port];
   }
   return 0;
+}
+
+
+void
+UART_Interrupt(UartChannel_et uart, UartIntrpt_et intrpt, bool_et enable)
+{
+  UartConfig_st cfg;
+  
+  memcpy_P(&cfg, &_channelConfigList[uart], sizeof(cfg));
+ 
+  switch (intrpt)
+  {
+    case UART_IRQ_RX:
+      BIT_WRITE(*CONTROL_STATUS_B_REG[cfg.port], RXCIE0, enable);
+      break;
+    case UART_IRQ_TX:
+      BIT_WRITE(*CONTROL_STATUS_B_REG[cfg.port], TXCIE0, enable);
+      break;
+    case UART_IRQ_TX_BUF_EMPTY:
+      BIT_WRITE(*CONTROL_STATUS_B_REG[cfg.port], UDRIE0, enable);
+      break;
+    default:
+      break;
+  }
+}
+
+bool_et
+UART_InterruptGet(UartChannel_et uart, UartIntrpt_et intrpt)
+{
+  UartConfig_st cfg;
+  
+  memcpy_P(&cfg, &_channelConfigList[uart], sizeof(cfg));
+ 
+  switch (intrpt)
+  {
+    case UART_IRQ_RX:
+      return BIT_IS_SET(*CONTROL_STATUS_A_REG[cfg.port], RXC0);
+      break;
+    case UART_IRQ_TX:
+      return BIT_IS_SET(*CONTROL_STATUS_A_REG[cfg.port], TXC0);
+      break;
+    case UART_IRQ_TX_BUF_EMPTY:
+      return BIT_IS_SET(*CONTROL_STATUS_A_REG[cfg.port], UDR0);
+      break;
+    default:
+      break;
+  }
+  return FALSE;
+}
+
+void
+UART_InterruptClear(UartChannel_et uart, UartIntrpt_et intrpt)
+{
+  UartConfig_st cfg;
+  
+  memcpy_P(&cfg, &_channelConfigList[uart], sizeof(cfg));
+ 
+  switch (intrpt)
+  {
+    case UART_IRQ_RX:
+      BIT_CLEAR(*CONTROL_STATUS_A_REG[cfg.port], RXC0);
+      break;
+    case UART_IRQ_TX:
+      BIT_CLEAR(*CONTROL_STATUS_A_REG[cfg.port], TXC0);
+      break;
+    case UART_IRQ_TX_BUF_EMPTY:
+      BIT_CLEAR(*CONTROL_STATUS_A_REG[cfg.port], UDR0);
+      break;
+    default:
+      break;
+  }
 }

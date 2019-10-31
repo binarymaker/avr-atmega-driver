@@ -19,49 +19,19 @@
   \endcond*/
 
 /* Includes ------------------------------------------------------------------*/
-#include "mcu.h"
-#include <avr/io.h>
-#include <util/delay.h>
-#include "dio.h"
-#include "dio-cfg.h"
+#include "isr.h"
 #include "uart.h"
-#include "uart-cfg.h"
-#include "regctrl.h"
+#include "dio.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+static uint8_t rxByte;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-int
-main()
+ISR(USART_RX_vect)
 {
-  uint8_t ctrlBit;
-  uint8_t lastCtrlBit = 0;
-  
-  DIO_Init(dioConfig);
-  UART_Init(uartConfig);
-  UART_Interrupt(UART_CH_0, UART_IRQ_RX, TRUE);
-  GLOBAL_INTERRUPT_ENABLE();
-  UART_Transfer(UART_CH_0, (uint8_t*)"UART Program \n\r", 15);
-  UART_Transfer(UART_CH_0, (uint8_t*)"Press key '1' for ON '0' for OFF \n\r", 35);
-  while(1)
-  {
-    UART_Read(UART_CH_0, &ctrlBit, 1000);
-    
-    if (lastCtrlBit != ctrlBit)
-    {
-      lastCtrlBit = ctrlBit;
-      UART_Transfer(UART_CH_0, (uint8_t*)"Pressed key is ", 15);
-      UART_Write(UART_CH_0, ctrlBit);
-      UART_Transfer(UART_CH_0, (uint8_t*)"\n\r", 2);
-      if ('1' == ctrlBit){
-        DIO_ChannelWrite(CH0, DIO_PINSTATE_HIGH);
-      }else{
-        DIO_ChannelWrite(CH0, DIO_PINSTATE_LOW);
-      }
-    }
-  }
-  return 0;
+  UART_Read(UART_CH_0, &rxByte, 1000);
+  Dio_ChannelToggle(CH0);
 }

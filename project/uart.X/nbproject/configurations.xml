@@ -22,6 +22,10 @@
       <itemPath>../../source/dio.h</itemPath>
       <itemPath>../../source/uart.c</itemPath>
       <itemPath>../../source/uart.h</itemPath>
+      <itemPath>../../source/isr.c</itemPath>
+      <itemPath>../../source/isr.h</itemPath>
+      <itemPath>../../source/mcu.c</itemPath>
+      <itemPath>../../source/mcu.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -58,6 +58,15 @@ UART_Transfer(UartChannel_et uart, uint8_t *data, uint32_t size);
 status_et
 UART_Receive(UartChannel_et uart, uint8_t *data, uint32_t size, time_t timeout);
 
+void
+UART_Interrupt(UartChannel_et uart, UartIntrpt_et intrpt, bool_et enable);
+
+bool_et
+UART_InterruptGet(UartChannel_et uart, UartIntrpt_et intrpt);
+
+void
+UART_InterruptClear(UartChannel_et uart, UartIntrpt_et intrpt);
+
 #ifdef __cplusplus
 }
 #endif

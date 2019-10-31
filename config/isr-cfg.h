@@ -18,81 +18,16 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef UART_68f839f0_fa05_11e9_a26e_0c5b8f279a64
-#define UART_68f839f0_fa05_11e9_a26e_0c5b8f279a64
+#ifndef ISR_d43fb452_fa3e_11e9_af68_0c5b8f279a64
+#define ISR_d43fb452_fa3e_11e9_af68_0c5b8f279a64
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stdint.h"
-#include <avr/pgmspace.h>
 /* Exported types ------------------------------------------------------------*/
-typedef enum
-{
-  UART_CH_0,
-  NUM_UART_CHANNEL
-}UartChannel_et;
-
-typedef enum
-{
-  UART0,
-  NUM_UART_PORTS
-}UartPort_et;
-
-typedef enum
-{
-  UART_DATABITS_5,
-  UART_DATABITS_6,
-  UART_DATABITS_7,
-  UART_DATABITS_8,
-  UART_DATABITS_9,
-  NUM_UART_DATABITS
-}UartDataBits_et;
-
-typedef enum
-{
-  UART_STOPBITS_1,
-  UART_STOPBITS_2,
-  NUM_UART_STOPBITS
-}UartStopBits_et;
-
-typedef enum
-{
-  UART_PARITY_DISABLE,
-  UART_PARITY_EVEN,
-  UART_PARITY_ODD,
-  NUM_UART_PARITY
-}UartParity_et;
-
-typedef enum
-{
-  UART_COM_MODE_TRANSMIT_ONLY,
-  UART_COM_MODE_RECEIVE_ONLY,
-  UART_COM_MODE_TRANSMIT_RECEIVE,
-  NUM_UART_MODE
-}UartComMode_et;
-
-typedef struct 
-{
-  UartPort_et     port     ;
-  uint32_t        baudRate ;
-  UartDataBits_et dataBits ;
-  UartStopBits_et stopBits ;
-  UartParity_et   parity   ;
-  UartComMode_et  comMode  ;
-}UartConfig_st;
-
-typedef enum
-{
-  UART_IRQ_RX,
-  UART_IRQ_TX,
-  UART_IRQ_TX_BUF_EMPTY,
-  NUM_UART_IRQ
-}UartIntrpt_et;
 /* Exported constants --------------------------------------------------------*/
-extern const UartConfig_st uartConfig[NUM_UART_CHANNEL] PROGMEM;
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
@@ -101,5 +36,5 @@ extern const UartConfig_st uartConfig[NUM_UART_CHANNEL] PROGMEM;
 }
 #endif
 
-#endif /* UART_68f839f0_fa05_11e9_a26e_0c5b8f279a64 */
+#endif /* ISR_d43fb452_fa3e_11e9_af68_0c5b8f279a64 */
 
