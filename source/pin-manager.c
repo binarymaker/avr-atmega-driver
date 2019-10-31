@@ -19,10 +19,86 @@
   \endcond*/
 
 /* Includes ------------------------------------------------------------------*/
+#include "pin-manager.h"
+#include "mcu.h"
+#include "regctrl.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
+
+#define _I_(pin)                                                            (0u)
+#define _O_(pin)                                                      BIT((pin))
+
+#define _L_(pin)                                                            (0u)
+#define _H_(pin)                                                      BIT((pin))
+
+#define INT_SENSE_LOW_LEVEL                                              (0x00u)
+#define INT_SENSE_ANY_EDGE                                               (0x01u)
+#define INT_SENSE_FALLING_EDGE                                           (0x02u)
+#define INT_SENSE_RISING_EDGE                                            (0x03u)
+
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
+void
+PIN_MANAGER_init()
+{
+  /**
+   * Port Direction -----------------------------------------------------------
+   * _O_ - Output
+   * _I_ - Input      
+   */
+  DDRB    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;  
+  DDRC    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;    
+  DDRD    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;
+  
+  /**
+   * Port value ---------------------------------------------------------------
+   *       INPUT | OUTPUT
+   * _L_ - Low     Open drain
+   * _H_ - High    PullUp
+   */
+  PORTB   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PORTC   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PORTD   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+
+  /**
+   * External interrupts ------------------------------------------------------
+   * EIMSK
+   *   _L_ - Disable
+   *   _H_ - Enable
+   * EICRC
+   *   INT_SENSE_LOW_LEVEL
+   *   INT_SENSE_ANY_EDGE
+   *   INT_SENSE_FALLING_EDGE
+   *   INT_SENSE_RISING_EDGE
+   */
+  /*                   INT1                 |         INT0                    */
+  EIMSK   =            _L_(1)               |        _L_(0)                  ;
+  EICRA   =    (INT_SENSE_RISING_EDGE << 2) | INT_SENSE_RISING_EDGE          ; 
+  
+  /**
+   * Pin change interrupt -----------------------------------------------------
+   * PCIRC
+   *   _L_ - Disable
+   *   _H_ - Enable
+   */
+  /*              PCIE2      |     PCIE1      |     PCIE0                   */
+  PCICR   =       _L_(2)     |     _L_(1)     |     _L_(0)                    ;
+  
+  /**
+   * Pin change interrupt channels
+   * _L_ - Disable particular pin
+   * _H_ - Enable particular pin
+   */
+  /**
+   * PCINT0->|   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
+   * PCINT1->|       |   14  |   13  |   12  |   11  |   10  |   9   |   8   |
+   * PCINT2->|   23  |   22  |   21  |   20  |   19  |   18  |   17  |   16  |     
+   */
+  PCMSK0  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PCMSK1  =            _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PCMSK2  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  
+}

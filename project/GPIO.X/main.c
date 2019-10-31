@@ -34,6 +34,7 @@ main()
 {
   GPIO_PinDirection(P_C0, GPIO_PIN_OUTPUT);
   GPIO_PinDirection(P_C1,GPIO_PIN_OUTPUT);
+  PIN_MANAGER_init();
   while(1)
   {
     
