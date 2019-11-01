@@ -24,6 +24,14 @@
 #include "regctrl.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
+enum intSense_e
+{
+INT_SENSE_LOW     ,
+INT_SENSE_CHANGE  ,
+INT_SENSE_FALLING ,
+INT_SENSE_RISING
+};
+
 /* Private macro -------------------------------------------------------------*/
 
 #define _I_(pin)                                                            (0u)
@@ -31,11 +39,6 @@
 
 #define _L_(pin)                                                            (0u)
 #define _H_(pin)                                                      BIT((pin))
-
-#define INT_SENSE_LOW_LEVEL                                              (0x00u)
-#define INT_SENSE_ANY_EDGE                                               (0x01u)
-#define INT_SENSE_FALLING_EDGE                                           (0x02u)
-#define INT_SENSE_RISING_EDGE                                            (0x03u)
 
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -76,7 +79,7 @@ PIN_MANAGER_init()
    */
   /*                   INT1                 |         INT0                    */
   EIMSK   =            _L_(1)               |        _L_(0)                  ;
-  EICRA   =    (INT_SENSE_RISING_EDGE << 2) | INT_SENSE_RISING_EDGE          ; 
+  EICRA   =    (INT_SENSE_RISING << 2)      |    INT_SENSE_RISING            ; 
   
   /**
    * Pin change interrupt -----------------------------------------------------
