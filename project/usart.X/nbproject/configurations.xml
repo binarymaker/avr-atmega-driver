@@ -27,6 +27,8 @@
       <itemPath>../../source/pin-manager.h</itemPath>
       <itemPath>../../source/usart.c</itemPath>
       <itemPath>../../source/usart.h</itemPath>
+      <itemPath>../../library/print/print.c</itemPath>
+      <itemPath>../../library/print/print.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -37,6 +39,7 @@
   <sourceRootList>
     <Elem>.</Elem>
     <Elem>../../source</Elem>
+    <Elem>../../library/print</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -149,7 +152,7 @@
       </AVR-GCC>
       <AVR-Global>
         <property key="common-include-directories"
-                  value="..\..\source;..\..\config;..\..\config\config-embclib;..\..\library\emclib\source;..\..\library\emclib\source\utils;..\..\library\emclib\source\stdint"/>
+                  value="..\..\source;..\..\config;..\..\config\config-embclib;..\..\library\emclib\source;..\..\library\emclib\source\utils;..\..\library\emclib\source\stdint;..\..\library\print"/>
         <property key="eep" value="false"/>
         <property key="external-ram-check" value="false"/>
         <property key="hex" value="true"/>

@@ -99,15 +99,3 @@ USART_Read()
   while ( BIT_IsClear(UCSR0A, RXC0) );
   return (REG_Read(UDR0));
 }
-
-void
-USART_Printf(uint8_t* str)
-{
-  uint16_t chIdx_i16 = 0;
-  
-  while (str[chIdx_i16] != NULL)
-  {
-    USART_Write(str[chIdx_i16]);
-    chIdx_i16++;
-  }
-}

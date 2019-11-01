@@ -37,6 +37,10 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
+#define USART_Print(_F, ...)  {                                            \
+                                PRINT_Channel(PRINT_CHANNEL_USART);        \
+                                PRINT_Printf((_F), __VA_ARGS__);           \
+                              }
 /* Exported functions ------------------------------------------------------- */
      
 void
@@ -48,8 +52,6 @@ USART_Write(uint8_t ch);
 uint8_t
 USART_Read();
 
-void
-USART_Printf(uint8_t* str);
 
 #ifdef __cplusplus
 }

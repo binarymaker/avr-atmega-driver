@@ -15,6 +15,7 @@
             <sourceRootList>
                 <sourceRootElem>.</sourceRootElem>
                 <sourceRootElem>../../source</sourceRootElem>
+                <sourceRootElem>../../library/print</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

@@ -18,32 +18,50 @@
   ******************************************************************************
   \endcond*/
 
-/* Includes ------------------------------------------------------------------*/
-#include "mcu.h"
-#include "delay.h"
-#include "gpio.h"
-#include "usart.h"
-#include "print.h"
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+#ifndef PRINT_12405ad7_fc71_11e9_af12_74dfbf0d835a
+#define PRINT_12405ad7_fc71_11e9_af12_74dfbf0d835a
 
-int
-main()
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+/**
+ * \brief Source file version tag
+ *        
+ *        version info: [15:8] main [7:0] beta
+ */
+#define __PRINT_VERSION      (0x0001u)
+
+/* Includes ------------------------------------------------------------------*/
+#include "stdint.h"
+#include <stdarg.h>
+/* Exported types ------------------------------------------------------------*/
+typedef enum
 {
-  MCU_Init();
-  signed char count = 100;
-  while(1)
-  {
-   // USART_Printf("Dec = %04d \n\r");
-    USART_Print("Dec = %03d %3d \n\r", count, count);
-    
-    count++;
-    
-    //DELAY_ms(100);
-  }
-  return 0;
+  RADIX_BIN = 2,
+  RADIX_OCT = 8,
+  RADIX_DEC = 10,
+  RADIX_HEX = 16
+} radix_et;
+
+typedef enum
+{
+    PRINT_CHANNEL_USART,
+    NUM_PRINT_CHANNEL_USART        
+} PrintChannel_et;
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+
+void
+PRINT_Channel(PrintChannel_et channel);
+
+void 
+PRINT_Printf(const char *argList, ...);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif /* PRINT_12405ad7_fc71_11e9_af12_74dfbf0d835a */
+
