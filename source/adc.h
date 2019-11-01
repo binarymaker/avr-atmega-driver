@@ -18,22 +18,39 @@
   ******************************************************************************
   \endcond*/
 
+#ifndef ADC_e07b2a3e_fca2_11e9_aece_705a0f25cb51
+#define ADC_e07b2a3e_fca2_11e9_aece_705a0f25cb51
+
+#include "pin-manager.h"
+
+
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+/**
+ * \brief Source file version tag
+ *        
+ *        version info: [15:8] main [7:0] beta
+ */
+#define __ADC_VERSION      (0x0001u)
+
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
-#include "pin-manager.h"
-#include "adc.h"
-#include "usart.h"
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
 
 void
-MCU_Init()
-{
-  PIN_MANAGER_Init();
-  ADC_Init();
-  USART_Init();
+ADC_Init();
+
+uint16_t
+ADC_Read(pin_et adcPin);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif /* ADC_e07b2a3e_fca2_11e9_aece_705a0f25cb51 */
+

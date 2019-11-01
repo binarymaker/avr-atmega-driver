@@ -20,9 +20,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
-#include "pin-manager.h"
-#include "adc.h"
+#include "delay.h"
+#include "gpio.h"
 #include "usart.h"
+#include "print.h"
+#include "adc.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -30,10 +32,16 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-void
-MCU_Init()
+int
+main()
 {
-  PIN_MANAGER_Init();
-  ADC_Init();
-  USART_Init();
+  MCU_Init();
+  uint16_t val;
+  while(1)
+  {
+    val = ADC_Read(0);
+    USART_Print("ADC value = %d \n\r", val);
+    DELAY_ms(100);
+  }
+  return 0;
 }
