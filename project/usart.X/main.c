@@ -18,37 +18,27 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef MCU_a1c3b80c_fb96_11e9_887f_0c5b8f279a64
-#define MCU_a1c3b80c_fb96_11e9_887f_0c5b8f279a64
-
-#ifdef __cplusplus
- extern "C" {
-#endif
-
-/**
- * \brief Source file version tag
- *        
- *        version info: [15:8] main [7:0] beta
- */
-#define __MCU_VERSION      (0x0001u)
-
 /* Includes ------------------------------------------------------------------*/
-#include <avr/io.h>
-#include "regctrl.h"
-#include "common-def.h"
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-#define F_CPU                                                         8000000UL
-/* Exported macro ------------------------------------------------------------*/
-#define _L_(pin)                                                            (0u)
-#define _H_(pin)                                                      BIT((pin))
-/* Exported functions ------------------------------------------------------- */
-void
-MCU_Init();
+#include "mcu.h"
+#include "delay.h"
+#include "gpio.h"
+#include "usart.h"
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
 
-#ifdef __cplusplus
+int
+main()
+{
+  MCU_Init();
+  
+  while(1)
+  {
+    USART_Printf((uint8_t*)"Serial communication \n\r");
+    DELAY_ms(1000);
+  }
+  return 0;
 }
-#endif
-
-#endif /* MCU_a1c3b80c_fb96_11e9_887f_0c5b8f279a64 */
-

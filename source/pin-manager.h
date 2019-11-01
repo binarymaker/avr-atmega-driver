@@ -48,7 +48,7 @@ typedef enum
 /* Exported functions ------------------------------------------------------- */
 
 void
-PIN_MANAGER_init();
+PIN_MANAGER_Init();
 
 #ifdef __cplusplus
 }

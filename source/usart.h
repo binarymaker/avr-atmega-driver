@@ -33,11 +33,23 @@
 #define __USART_VERSION      (0x0001u)
 
 /* Includes ------------------------------------------------------------------*/
+#include "stdint.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+     
+void
+USART_Init();
 
+void
+USART_Write(uint8_t ch);
+
+uint8_t
+USART_Read();
+
+void
+USART_Printf(uint8_t* str);
 
 #ifdef __cplusplus
 }

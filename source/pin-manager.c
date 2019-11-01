@@ -33,19 +33,15 @@ INT_SENSE_RISING
 };
 
 /* Private macro -------------------------------------------------------------*/
-
 #define _I_(pin)                                                            (0u)
 #define _O_(pin)                                                      BIT((pin))
-
-#define _L_(pin)                                                            (0u)
-#define _H_(pin)                                                      BIT((pin))
 
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
 void
-PIN_MANAGER_init()
+PIN_MANAGER_Init()
 {
   /**
    * Port Direction -----------------------------------------------------------
