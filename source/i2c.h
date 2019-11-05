@@ -18,24 +18,50 @@
   ******************************************************************************
   \endcond*/
 
+#ifndef I2C_5fc37576_febd_11e9_9ff1_705a0f25cb51
+#define I2C_5fc37576_febd_11e9_9ff1_705a0f25cb51
+
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+/**
+ * \brief Source file version tag
+ *        
+ *        version info: [15:8] main [7:0] beta
+ */
+#define __I2C_VERSION      (0x0001u)
+
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
-#include "pin-manager.h"
-#include "adc.h"
-#include "usart.h"
-#include "i2c.h"
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+void
+I2C_Init();
 
 void
-MCU_Init()
-{
-  PIN_MANAGER_Init();
-  ADC_Init();
-  USART_Init();
-  I2C_Init();
+I2C_Start();
+
+void
+I2C_Write(uint8_t data);
+
+uint8_t
+I2C_Read();
+
+void
+I2C_Stop();
+
+void
+I2C_Transmit(uint8_t slaveAddr, uint8_t *data, uint16_t size);
+
+void
+I2C_Receive(uint8_t slaveAddr, uint8_t *data, uint16_t size);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif /* I2C_5fc37576_febd_11e9_9ff1_705a0f25cb51 */
+

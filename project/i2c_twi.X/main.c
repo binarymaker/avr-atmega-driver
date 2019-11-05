@@ -20,22 +20,42 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
-#include "pin-manager.h"
-#include "adc.h"
+#include "delay.h"
+#include "gpio.h"
 #include "usart.h"
+#include "print.h"
+#include "adc.h"
 #include "i2c.h"
+#include "ssd1306.h"
+#include "font.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
-
-void
-MCU_Init()
+int i;
+int
+main()
 {
-  PIN_MANAGER_Init();
-  ADC_Init();
-  USART_Init();
-  I2C_Init();
+  MCU_Init();
+
+  DELAY_ms(100);
+  
+ /* for (i = 0; i < 128; i++)
+  {
+    I2C_Start();
+    I2C_Write(i);
+    I2C_Stop();
+    DELAY_ms(100);
+  }*/
+  
+  Oled_Init();
+  Oled_SetFont(Font_6x8, 6, 8, 32,127);
+  Oled_ConstText("library for", 0, 0);
+  Oled_ConstText("Graphic", 0, 2);
+  Oled_ConstText("OLED 128x64", 0, 4);
+  Oled_ConstText("SSD1306", 0, 6);
+  while(1);
+  return 0;
 }

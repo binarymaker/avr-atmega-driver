@@ -36,6 +36,8 @@
 #include <avr/io.h>
 #include "regctrl.h"
 #include "common-def.h"
+#include "gpio.h"
+#include "i2c.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 #define F_CPU                                                         8000000UL
