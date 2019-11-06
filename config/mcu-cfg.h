@@ -25,7 +25,21 @@
  extern "C" {
 #endif
 
+/* Exported constants --------------------------------------------------------*/
+#define F_CPU                                                         8000000UL
+   
+#define MCU_GPIO_DRIVER                                                 ENABLE   
+#define MCU_ADC_DRIVER                                                  ENABLE
+#define MCU_UART_DRIVER                                                 ENABLE
+#define MCU_I2C_DRIVER                                                  ENABLE
+#define MCU_SPI_DRIVER                                                  DISABLE
+#define MCU_TIMER0_DRIVER                                               DISABLE
+#define MCU_TIMER1_DRIVER                                               DISABLE
+#define MCU_TIMER2_DRIVER                                               DISABLE
+
 /* Includes ------------------------------------------------------------------*/
+#include "mcu.h"
+   
 #include "pin-manager-cfg.h"
 #include "delay-cfg.h"
 #include "gpio-cfg.h"
@@ -33,8 +47,6 @@
 #include "usart-cfg.h"
 #include "i2c-cfg.h"
 /* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-#define F_CPU                                                         8000000UL
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 

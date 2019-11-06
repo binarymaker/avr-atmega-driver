@@ -14,7 +14,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>../../source</sourceRootElem>
-                <sourceRootElem>../../config/config-embclib</sourceRootElem>
+                <sourceRootElem>../../config</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

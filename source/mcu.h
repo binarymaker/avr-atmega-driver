@@ -34,16 +34,44 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <avr/io.h>
+#include "stdint.h"
 #include "mcu-cfg.h"
 #include "regctrl.h"
 #include "common-def.h"
 
 #include "delay.h"   
 #include "pin-manager-cfg.h"
+
+#if MCU_GPIO_DRIVER == ENABLE
 #include "gpio.h"
+#endif
+
+#if MCU_UART_DRIVER == ENABLE
 #include "usart.h"
+#endif
+
+#if MCU_ADC_DRIVER == ENABLE
 #include "adc.h"
+#endif
+
+#if MCU_I2C_DRIVER == ENABLE
 #include "i2c.h"
+#endif
+
+#if MCU_SPI_DRIVER == ENABLE
+#endif 
+   
+#if MCU_TIMER0_DRIVER == ENABLE
+#endif 
+
+#if MCU_TIMER1_DRIVER == ENABLE
+#endif 
+
+#if MCU_TIMER2_DRIVER == ENABLE
+#endif 
+    
+ 
+ 
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

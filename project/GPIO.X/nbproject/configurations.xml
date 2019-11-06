@@ -7,7 +7,6 @@
       <itemPath>../../source/delay.h</itemPath>
       <itemPath>../../source/gpio.h</itemPath>
       <itemPath>../../source/mcu.h</itemPath>
-      <itemPath>../../source/pin-manager.h</itemPath>
       <itemPath>../../config/config-embclib/complier-cfg.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -21,7 +20,7 @@
       <itemPath>../../source/delay.c</itemPath>
       <itemPath>../../source/gpio.c</itemPath>
       <itemPath>../../source/mcu.c</itemPath>
-      <itemPath>../../source/pin-manager.c</itemPath>
+      <itemPath>../../config/gpio-cfg.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -31,7 +30,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../../source</Elem>
-    <Elem>../../config/config-embclib</Elem>
+    <Elem>../../config</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

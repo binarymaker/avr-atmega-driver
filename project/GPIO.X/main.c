@@ -20,8 +20,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
-#include "delay.h"
-#include "gpio.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -32,17 +30,16 @@
 int
 main()
 {
-  GPIO_PinDirection(P_C0, GPIO_PIN_OUTPUT);
-  GPIO_PinDirection(P_C1,GPIO_PIN_OUTPUT);
-  PIN_MANAGER_init();
+  GPIO_PinDirection(P_C4, GPIO_PIN_OUTPUT);
+  GPIO_PinDirection(P_C5, GPIO_PIN_OUTPUT);
+  
   while(1)
   {
+    GPIO_PinToggle(P_C4);
     
-    GPIO_PinToggle(P_C1);
-    
-    GPIO_PinWrite(P_C0, LOW);
+    GPIO_PinWrite(P_C5, LOW);
     DELAY_ms(100);
-    GPIO_PinWrite(P_C0, HIGH);
+    GPIO_PinWrite(P_C5, HIGH);
     DELAY_ms(100);
   }
   return 0;
