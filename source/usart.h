@@ -38,10 +38,10 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
-#define USART_Print(_F, ...)  {                                            \
-                                PRINT_Channel(PRINT_CHANNEL_USART);        \
+#define USART_Printf(_F, ...)  {                                           \
+                                PRINT_ChannelSelect(PRINT_CHANNEL_USART);  \
                                 PRINT_Printf((_F), __VA_ARGS__);           \
-                              }
+                               }
 /* Exported functions ------------------------------------------------------- */
      
 void

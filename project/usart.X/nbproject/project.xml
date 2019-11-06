@@ -16,6 +16,9 @@
                 <sourceRootElem>.</sourceRootElem>
                 <sourceRootElem>../../source</sourceRootElem>
                 <sourceRootElem>../../library/print</sourceRootElem>
+                <sourceRootElem>../../config/config-printf</sourceRootElem>
+                <sourceRootElem>../../library/printf/source</sourceRootElem>
+                <sourceRootElem>../../library/emclib/source/stdint</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

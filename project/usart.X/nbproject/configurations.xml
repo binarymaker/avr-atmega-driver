@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>../../library/emclib/source/stdint/stdint.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -27,8 +28,14 @@
       <itemPath>../../source/pin-manager.h</itemPath>
       <itemPath>../../source/usart.c</itemPath>
       <itemPath>../../source/usart.h</itemPath>
-      <itemPath>../../library/print/print.c</itemPath>
-      <itemPath>../../library/print/print.h</itemPath>
+      <itemPath>../../config/config-printf/print-cfg.c</itemPath>
+      <itemPath>../../config/config-printf/print-cfg.h</itemPath>
+      <itemPath>../../library/printf/source/print.c</itemPath>
+      <itemPath>../../library/printf/source/print.h</itemPath>
+      <itemPath>../../source/adc.c</itemPath>
+      <itemPath>../../source/adc.h</itemPath>
+      <itemPath>../../source/i2c.c</itemPath>
+      <itemPath>../../source/i2c.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -40,6 +47,9 @@
     <Elem>.</Elem>
     <Elem>../../source</Elem>
     <Elem>../../library/print</Elem>
+    <Elem>../../config/config-printf</Elem>
+    <Elem>../../library/printf/source</Elem>
+    <Elem>../../library/emclib/source/stdint</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -152,7 +162,7 @@
       </AVR-GCC>
       <AVR-Global>
         <property key="common-include-directories"
-                  value="..\..\source;..\..\config;..\..\config\config-embclib;..\..\library\emclib\source;..\..\library\emclib\source\utils;..\..\library\emclib\source\stdint;..\..\library\print"/>
+                  value="..\..\source;..\..\config;..\..\config\config-embclib;..\..\library\emclib\source;..\..\library\emclib\source\utils;..\..\library\emclib\source\stdint;..\..\config\config-printf;..\..\library\printf\source"/>
         <property key="eep" value="false"/>
         <property key="external-ram-check" value="false"/>
         <property key="hex" value="true"/>

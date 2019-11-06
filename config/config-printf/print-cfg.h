@@ -18,28 +18,34 @@
   ******************************************************************************
   \endcond*/
 
-/* Includes ------------------------------------------------------------------*/
-#include "mcu.h"
-#include "delay.h"
-#include "gpio.h"
-#include "usart.h"
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+#ifndef PRINT_12ad8161_fc71_11e9_b910_74dfbf0d835a
+#define PRINT_12ad8161_fc71_11e9_b910_74dfbf0d835a
 
-int
-main()
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+/* Includes ------------------------------------------------------------------*/
+/* Exported types ------------------------------------------------------------*/
+typedef enum
 {
-  MCU_Init();
-  int8_t count = 0;
-  while(1)
-  {
-    USART_Printf("DEC = %04d HEX = %04x BIN = %08b \n\r", count, count, count);
-    count++;
-    DELAY_ms(100);
-  }
-  return 0;
+  PRINT_CHANNEL_BUFFER,
+  PRINT_CHANNEL_USART,
+  NUM_PRINT_CHANNEL
+} PrintChannel_et;
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+
+void
+PRINT_ChannelSelect(PrintChannel_et channel);
+
+void
+PRINT_PutChar(char ch);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif /* PRINT_12ad8161_fc71_11e9_b910_74dfbf0d835a */
+

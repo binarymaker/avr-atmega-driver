@@ -19,27 +19,38 @@
   \endcond*/
 
 /* Includes ------------------------------------------------------------------*/
+#include "print-cfg.h"
+#include "stdint.h"
+
 #include "mcu.h"
-#include "delay.h"
-#include "gpio.h"
 #include "usart.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+static PrintChannel_et print_channel;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-int
-main()
+void
+PRINT_ChannelSelect(PrintChannel_et channel)
 {
-  MCU_Init();
-  int8_t count = 0;
-  while(1)
-  {
-    USART_Printf("DEC = %04d HEX = %04x BIN = %08b \n\r", count, count, count);
-    count++;
-    DELAY_ms(100);
-  }
-  return 0;
+  print_channel = channel;
 }
+
+void
+PRINT_PutChar(char ch)
+{
+  switch (print_channel)
+  {
+    case PRINT_CHANNEL_BUFFER:
+      PRINT_BufferWrite(ch);
+      break;
+    case PRINT_CHANNEL_USART:
+      USART_Write((uint8_t)ch);
+      break;
+    default:
+      break;
+  }
+}
+
