@@ -20,10 +20,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
-#include "pin-manager.h"
-#include "adc.h"
-#include "usart.h"
-#include "i2c.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -34,8 +30,8 @@
 void
 MCU_Init()
 {
-  PIN_MANAGER_Init();
-  ADC_Init();
-  USART_Init();
-  I2C_Init();
+  PIN_MANAGER_Config();
+  ADC_Config();
+  USART_Config();
+  I2C_Config();
 }

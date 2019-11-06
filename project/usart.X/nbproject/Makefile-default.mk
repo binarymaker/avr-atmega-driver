@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c ../../source/delay.c ../../source/device-config.c ../../source/gpio.c ../../source/interrupt-manager.c ../../source/mcu.c ../../source/pin-manager.c ../../source/usart.c ../../config/config-printf/print-cfg.c ../../library/printf/source/print.c ../../source/adc.c ../../source/i2c.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c ../../source/delay.c ../../source/gpio.c ../../source/interrupt-manager.c ../../source/mcu.c ../../source/usart.c ../../config/config-printf/print-cfg.c ../../library/printf/source/print.c ../../source/adc.c ../../source/i2c.c ../../config/adc-cfg.c ../../config/i2c-cfg.c ../../config/pin-manager-cfg.c ../../config/usart-cfg.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/870914629/delay.o ${OBJECTDIR}/_ext/870914629/device-config.o ${OBJECTDIR}/_ext/870914629/gpio.o ${OBJECTDIR}/_ext/870914629/interrupt-manager.o ${OBJECTDIR}/_ext/870914629/mcu.o ${OBJECTDIR}/_ext/870914629/pin-manager.o ${OBJECTDIR}/_ext/870914629/usart.o ${OBJECTDIR}/_ext/967151063/print-cfg.o ${OBJECTDIR}/_ext/1553189987/print.o ${OBJECTDIR}/_ext/870914629/adc.o ${OBJECTDIR}/_ext/870914629/i2c.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/_ext/870914629/delay.o.d ${OBJECTDIR}/_ext/870914629/device-config.o.d ${OBJECTDIR}/_ext/870914629/gpio.o.d ${OBJECTDIR}/_ext/870914629/interrupt-manager.o.d ${OBJECTDIR}/_ext/870914629/mcu.o.d ${OBJECTDIR}/_ext/870914629/pin-manager.o.d ${OBJECTDIR}/_ext/870914629/usart.o.d ${OBJECTDIR}/_ext/967151063/print-cfg.o.d ${OBJECTDIR}/_ext/1553189987/print.o.d ${OBJECTDIR}/_ext/870914629/adc.o.d ${OBJECTDIR}/_ext/870914629/i2c.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/870914629/delay.o ${OBJECTDIR}/_ext/870914629/gpio.o ${OBJECTDIR}/_ext/870914629/interrupt-manager.o ${OBJECTDIR}/_ext/870914629/mcu.o ${OBJECTDIR}/_ext/870914629/usart.o ${OBJECTDIR}/_ext/967151063/print-cfg.o ${OBJECTDIR}/_ext/1553189987/print.o ${OBJECTDIR}/_ext/870914629/adc.o ${OBJECTDIR}/_ext/870914629/i2c.o ${OBJECTDIR}/_ext/1329200926/adc-cfg.o ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o ${OBJECTDIR}/_ext/1329200926/usart-cfg.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/_ext/870914629/delay.o.d ${OBJECTDIR}/_ext/870914629/gpio.o.d ${OBJECTDIR}/_ext/870914629/interrupt-manager.o.d ${OBJECTDIR}/_ext/870914629/mcu.o.d ${OBJECTDIR}/_ext/870914629/usart.o.d ${OBJECTDIR}/_ext/967151063/print-cfg.o.d ${OBJECTDIR}/_ext/1553189987/print.o.d ${OBJECTDIR}/_ext/870914629/adc.o.d ${OBJECTDIR}/_ext/870914629/i2c.o.d ${OBJECTDIR}/_ext/1329200926/adc-cfg.o.d ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o.d ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o.d ${OBJECTDIR}/_ext/1329200926/usart-cfg.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/870914629/delay.o ${OBJECTDIR}/_ext/870914629/device-config.o ${OBJECTDIR}/_ext/870914629/gpio.o ${OBJECTDIR}/_ext/870914629/interrupt-manager.o ${OBJECTDIR}/_ext/870914629/mcu.o ${OBJECTDIR}/_ext/870914629/pin-manager.o ${OBJECTDIR}/_ext/870914629/usart.o ${OBJECTDIR}/_ext/967151063/print-cfg.o ${OBJECTDIR}/_ext/1553189987/print.o ${OBJECTDIR}/_ext/870914629/adc.o ${OBJECTDIR}/_ext/870914629/i2c.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/870914629/delay.o ${OBJECTDIR}/_ext/870914629/gpio.o ${OBJECTDIR}/_ext/870914629/interrupt-manager.o ${OBJECTDIR}/_ext/870914629/mcu.o ${OBJECTDIR}/_ext/870914629/usart.o ${OBJECTDIR}/_ext/967151063/print-cfg.o ${OBJECTDIR}/_ext/1553189987/print.o ${OBJECTDIR}/_ext/870914629/adc.o ${OBJECTDIR}/_ext/870914629/i2c.o ${OBJECTDIR}/_ext/1329200926/adc-cfg.o ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o ${OBJECTDIR}/_ext/1329200926/usart-cfg.o
 
 # Source Files
-SOURCEFILES=main.c ../../source/delay.c ../../source/device-config.c ../../source/gpio.c ../../source/interrupt-manager.c ../../source/mcu.c ../../source/pin-manager.c ../../source/usart.c ../../config/config-printf/print-cfg.c ../../library/printf/source/print.c ../../source/adc.c ../../source/i2c.c
+SOURCEFILES=main.c ../../source/delay.c ../../source/gpio.c ../../source/interrupt-manager.c ../../source/mcu.c ../../source/usart.c ../../config/config-printf/print-cfg.c ../../library/printf/source/print.c ../../source/adc.c ../../source/i2c.c ../../config/adc-cfg.c ../../config/i2c-cfg.c ../../config/pin-manager-cfg.c ../../config/usart-cfg.c
 
 # Pack Options 
 PACK_COMPILER_OPTIONS=-I ${DFP_DIR}\include
@@ -122,12 +122,6 @@ ${OBJECTDIR}/_ext/870914629/delay.o: ../../source/delay.c  nbproject/Makefile-${
 	@${RM} ${OBJECTDIR}/_ext/870914629/delay.o 
 	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/delay.o.d" -MT "${OBJECTDIR}/_ext/870914629/delay.o.d" -MT ${OBJECTDIR}/_ext/870914629/delay.o  -o ${OBJECTDIR}/_ext/870914629/delay.o ../../source/delay.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/_ext/870914629/device-config.o: ../../source/device-config.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
-	@${RM} ${OBJECTDIR}/_ext/870914629/device-config.o.d 
-	@${RM} ${OBJECTDIR}/_ext/870914629/device-config.o 
-	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/device-config.o.d" -MT "${OBJECTDIR}/_ext/870914629/device-config.o.d" -MT ${OBJECTDIR}/_ext/870914629/device-config.o  -o ${OBJECTDIR}/_ext/870914629/device-config.o ../../source/device-config.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/_ext/870914629/gpio.o: ../../source/gpio.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
 	@${RM} ${OBJECTDIR}/_ext/870914629/gpio.o.d 
@@ -145,12 +139,6 @@ ${OBJECTDIR}/_ext/870914629/mcu.o: ../../source/mcu.c  nbproject/Makefile-${CND_
 	@${RM} ${OBJECTDIR}/_ext/870914629/mcu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/870914629/mcu.o 
 	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/mcu.o.d" -MT "${OBJECTDIR}/_ext/870914629/mcu.o.d" -MT ${OBJECTDIR}/_ext/870914629/mcu.o  -o ${OBJECTDIR}/_ext/870914629/mcu.o ../../source/mcu.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/870914629/pin-manager.o: ../../source/pin-manager.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
-	@${RM} ${OBJECTDIR}/_ext/870914629/pin-manager.o.d 
-	@${RM} ${OBJECTDIR}/_ext/870914629/pin-manager.o 
-	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/pin-manager.o.d" -MT "${OBJECTDIR}/_ext/870914629/pin-manager.o.d" -MT ${OBJECTDIR}/_ext/870914629/pin-manager.o  -o ${OBJECTDIR}/_ext/870914629/pin-manager.o ../../source/pin-manager.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/870914629/usart.o: ../../source/usart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
@@ -182,6 +170,30 @@ ${OBJECTDIR}/_ext/870914629/i2c.o: ../../source/i2c.c  nbproject/Makefile-${CND_
 	@${RM} ${OBJECTDIR}/_ext/870914629/i2c.o 
 	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/i2c.o.d" -MT "${OBJECTDIR}/_ext/870914629/i2c.o.d" -MT ${OBJECTDIR}/_ext/870914629/i2c.o  -o ${OBJECTDIR}/_ext/870914629/i2c.o ../../source/i2c.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/_ext/1329200926/adc-cfg.o: ../../config/adc-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/adc-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/adc-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/adc-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/adc-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/adc-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/adc-cfg.o ../../config/adc-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1329200926/i2c-cfg.o: ../../config/i2c-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/i2c-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/i2c-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o ../../config/i2c-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o: ../../config/pin-manager-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o ../../config/pin-manager-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1329200926/usart-cfg.o: ../../config/usart-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/usart-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/usart-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS} -g -DDEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1 -gdwarf-2  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/usart-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/usart-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/usart-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/usart-cfg.o ../../config/usart-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -194,12 +206,6 @@ ${OBJECTDIR}/_ext/870914629/delay.o: ../../source/delay.c  nbproject/Makefile-${
 	@${RM} ${OBJECTDIR}/_ext/870914629/delay.o.d 
 	@${RM} ${OBJECTDIR}/_ext/870914629/delay.o 
 	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/delay.o.d" -MT "${OBJECTDIR}/_ext/870914629/delay.o.d" -MT ${OBJECTDIR}/_ext/870914629/delay.o  -o ${OBJECTDIR}/_ext/870914629/delay.o ../../source/delay.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/870914629/device-config.o: ../../source/device-config.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
-	@${RM} ${OBJECTDIR}/_ext/870914629/device-config.o.d 
-	@${RM} ${OBJECTDIR}/_ext/870914629/device-config.o 
-	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/device-config.o.d" -MT "${OBJECTDIR}/_ext/870914629/device-config.o.d" -MT ${OBJECTDIR}/_ext/870914629/device-config.o  -o ${OBJECTDIR}/_ext/870914629/device-config.o ../../source/device-config.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/870914629/gpio.o: ../../source/gpio.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
@@ -218,12 +224,6 @@ ${OBJECTDIR}/_ext/870914629/mcu.o: ../../source/mcu.c  nbproject/Makefile-${CND_
 	@${RM} ${OBJECTDIR}/_ext/870914629/mcu.o.d 
 	@${RM} ${OBJECTDIR}/_ext/870914629/mcu.o 
 	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/mcu.o.d" -MT "${OBJECTDIR}/_ext/870914629/mcu.o.d" -MT ${OBJECTDIR}/_ext/870914629/mcu.o  -o ${OBJECTDIR}/_ext/870914629/mcu.o ../../source/mcu.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/_ext/870914629/pin-manager.o: ../../source/pin-manager.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
-	@${RM} ${OBJECTDIR}/_ext/870914629/pin-manager.o.d 
-	@${RM} ${OBJECTDIR}/_ext/870914629/pin-manager.o 
-	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/pin-manager.o.d" -MT "${OBJECTDIR}/_ext/870914629/pin-manager.o.d" -MT ${OBJECTDIR}/_ext/870914629/pin-manager.o  -o ${OBJECTDIR}/_ext/870914629/pin-manager.o ../../source/pin-manager.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/_ext/870914629/usart.o: ../../source/usart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/870914629" 
@@ -254,6 +254,30 @@ ${OBJECTDIR}/_ext/870914629/i2c.o: ../../source/i2c.c  nbproject/Makefile-${CND_
 	@${RM} ${OBJECTDIR}/_ext/870914629/i2c.o.d 
 	@${RM} ${OBJECTDIR}/_ext/870914629/i2c.o 
 	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/870914629/i2c.o.d" -MT "${OBJECTDIR}/_ext/870914629/i2c.o.d" -MT ${OBJECTDIR}/_ext/870914629/i2c.o  -o ${OBJECTDIR}/_ext/870914629/i2c.o ../../source/i2c.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1329200926/adc-cfg.o: ../../config/adc-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/adc-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/adc-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/adc-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/adc-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/adc-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/adc-cfg.o ../../config/adc-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1329200926/i2c-cfg.o: ../../config/i2c-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/i2c-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/i2c-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/i2c-cfg.o ../../config/i2c-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o: ../../config/pin-manager-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/pin-manager-cfg.o ../../config/pin-manager-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1329200926/usart-cfg.o: ../../config/usart-cfg.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1329200926" 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/usart-cfg.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1329200926/usart-cfg.o 
+	 ${MP_CC}  $(MP_EXTRA_CC_PRE) -mmcu=atmega328 ${PACK_COMPILER_OPTIONS} ${PACK_COMMON_OPTIONS}  -x c -c -D__$(MP_PROCESSOR_OPTION)__  -I"../../source" -I"../../config" -I"../../config/config-embclib" -I"../../library/emclib/source" -I"../../library/emclib/source/utils" -I"../../library/emclib/source/stdint" -I"../../config/config-printf" -I"../../library/printf/source" -funsigned-char -funsigned-bitfields -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -MD -MP -MF "${OBJECTDIR}/_ext/1329200926/usart-cfg.o.d" -MT "${OBJECTDIR}/_ext/1329200926/usart-cfg.o.d" -MT ${OBJECTDIR}/_ext/1329200926/usart-cfg.o  -o ${OBJECTDIR}/_ext/1329200926/usart-cfg.o ../../config/usart-cfg.c  -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD) 
 	
 endif
 

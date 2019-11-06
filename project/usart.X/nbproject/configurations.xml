@@ -16,16 +16,12 @@
       <itemPath>main.c</itemPath>
       <itemPath>../../source/delay.c</itemPath>
       <itemPath>../../source/delay.h</itemPath>
-      <itemPath>../../source/device-config.c</itemPath>
-      <itemPath>../../source/device-config.h</itemPath>
       <itemPath>../../source/gpio.c</itemPath>
       <itemPath>../../source/gpio.h</itemPath>
       <itemPath>../../source/interrupt-manager.c</itemPath>
       <itemPath>../../source/interrupt-manager.h</itemPath>
       <itemPath>../../source/mcu.c</itemPath>
       <itemPath>../../source/mcu.h</itemPath>
-      <itemPath>../../source/pin-manager.c</itemPath>
-      <itemPath>../../source/pin-manager.h</itemPath>
       <itemPath>../../source/usart.c</itemPath>
       <itemPath>../../source/usart.h</itemPath>
       <itemPath>../../config/config-printf/print-cfg.c</itemPath>
@@ -36,6 +32,18 @@
       <itemPath>../../source/adc.h</itemPath>
       <itemPath>../../source/i2c.c</itemPath>
       <itemPath>../../source/i2c.h</itemPath>
+      <itemPath>../../config/adc-cfg.c</itemPath>
+      <itemPath>../../config/adc-cfg.h</itemPath>
+      <itemPath>../../config/delay-cfg.h</itemPath>
+      <itemPath>../../config/gpio-cfg.h</itemPath>
+      <itemPath>../../config/i2c-cfg.c</itemPath>
+      <itemPath>../../config/i2c-cfg.h</itemPath>
+      <itemPath>../../config/interrupt-manager-cfg.h</itemPath>
+      <itemPath>../../config/mcu-cfg.h</itemPath>
+      <itemPath>../../config/pin-manager-cfg.c</itemPath>
+      <itemPath>../../config/pin-manager-cfg.h</itemPath>
+      <itemPath>../../config/usart-cfg.c</itemPath>
+      <itemPath>../../config/usart-cfg.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -47,9 +55,9 @@
     <Elem>.</Elem>
     <Elem>../../source</Elem>
     <Elem>../../library/print</Elem>
-    <Elem>../../config/config-printf</Elem>
     <Elem>../../library/printf/source</Elem>
     <Elem>../../library/emclib/source/stdint</Elem>
+    <Elem>../../config</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

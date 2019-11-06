@@ -26,8 +26,15 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "pin-manager-cfg.h"
+#include "delay-cfg.h"
+#include "gpio-cfg.h"
+#include "adc-cfg.h"
+#include "usart-cfg.h"
+#include "i2c-cfg.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
+#define F_CPU                                                         8000000UL
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 

@@ -28,86 +28,8 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-void
-ADC_Init()
-{
-  /**
-   * ADC module activate ------------------------------------------------------
-   *            
-   *            ADEN 
-   * Enable  -  _H_
-   * Disable -  _L_
-   */
-  ADCSRA    =    _H_(ADEN)                                                     ;
-  
-  /**
-   * ADC prescaler selection --------------------------------------------------
-   *  clk
-   * Divider       ADPS2   |   ADPS1  |   ADPS0
-   *   2     -      _L_    |   _L_    |    _L_
-   *   2     -      _L_    |   _L_    |    _H_
-   *   4     -      _L_    |   _H_    |    _L_
-   *   8     -      _L_    |   _H_    |    _H_
-   *  16     -      _H_    |   _L_    |    _L_
-   *  32     -      _H_    |   _L_    |    _H_
-   *  64     -      _H_    |   _H_    |    _L_
-   * 128     -      _H_    |   _H_    |    _H_
-   */
-  ADCSRA   |=    _L_(ADPS2) |   _L_(ADPS1)   |   _L_(ADPS0)                    ;
-  
-  
-  /**
-   * ADC result data justify --------------------------------------------------
-   *          
-   *          ADLAR                  ADCH    ADCL
-   * Right  -  _L_             ex: 000000DD DDDDDDDD
-   * Left   -  _H_             ex: DDDDDDDD DD000000
-   */
-  ADMUX     =    _L_(ADLAR)                                                    ;
-  
-  /**
-   * ADC Trigger mode ---------------------------------------------------------
-   * 
-   *           ADATE 
-   * Enable  -  _H_
-   * Disable -  _L_
-   */
-  ADCSRA   |=    _L_(ADATE)                                                    ;
-  
-  /**
-   * ADC Trigger source selection
-   *                      ADTS2   |   ADTS1  |   ADTS0
-   * Free run       -      _L_    |   _L_    |    _L_
-   * Analog cmpr    -      _L_    |   _L_    |    _H_
-   * Ext Intrpt 0   -      _L_    |   _H_    |    _L_
-   * Tim0 cmpr A    -      _L_    |   _H_    |    _H_
-   * Tim0 overflow  -      _H_    |   _L_    |    _L_
-   * Tim1 cmpr B    -      _H_    |   _L_    |    _H_
-   * Tim1 overflow  -      _H_    |   _H_    |    _L_
-   * Tim1 capture   -      _H_    |   _H_    |    _H_
-   */
-  ADCSRB   |=    _L_(ADTS2)  |   _L_(ADTS1)   |   _L_(ADTS0)                   ;
-  
-  /**
-   * ADC Channel enable / Digital pin disable
-   *              
-   * Analog pin   -   _H_
-   * Digital pin  -   _L_ 
-   */
-  DIDR0     =   _L_(5) | _L_(4) | _L_(3) | _L_(2) | _L_(1) | _H_(0)            ;
-  /**
-   * ADC Interrupt activate ---------------------------------------------------
-   * 
-   *            ADIE 
-   * Enable  -  _H_
-   * Disable -  _L_
-   */
-  ADCSRA   |=    _L_(ADIE)                                                     ;
-
-}
-
 uint16_t
-ADC_Read(pin_et ch)
+ADC_Read(uint8_t ch)
 {
   REG_Merge(ADMUX, ch, 0x0fu);
   BIT_Set(ADCSRA, ADSC);

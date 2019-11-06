@@ -19,9 +19,7 @@
   \endcond*/
 
 /* Includes ------------------------------------------------------------------*/
-#include "pin-manager.h"
 #include "mcu.h"
-#include "regctrl.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 enum intSense_e
@@ -41,7 +39,7 @@ INT_SENSE_RISING
 /* Private functions ---------------------------------------------------------*/
 
 void
-PIN_MANAGER_Init()
+PIN_MANAGER_Config()
 {
   /**
    * Port Direction -----------------------------------------------------------

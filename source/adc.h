@@ -21,9 +21,6 @@
 #ifndef ADC_e07b2a3e_fca2_11e9_aece_705a0f25cb51
 #define ADC_e07b2a3e_fca2_11e9_aece_705a0f25cb51
 
-#include "pin-manager.h"
-
-
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -42,11 +39,8 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-void
-ADC_Init();
-
 uint16_t
-ADC_Read(pin_et adcPin);
+ADC_Read(uint8_t adcPin);
 
 #ifdef __cplusplus
 }

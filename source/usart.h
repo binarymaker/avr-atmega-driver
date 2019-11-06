@@ -33,19 +33,25 @@
 #define __USART_VERSION      (0x0001u)
 
 /* Includes ------------------------------------------------------------------*/
-#include "stdint.h"
+#include "mcu.h"
+
+#if defined(USART_PRINTF_REDIRECT)
 #include "print.h"
+#endif
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
+#if defined(USART_PRINTF_REDIRECT)
 #define USART_Printf(_F, ...)  {                                           \
                                 PRINT_ChannelSelect(PRINT_CHANNEL_USART);  \
                                 PRINT_Printf((_F), __VA_ARGS__);           \
                                }
+#else
+#define USART_Printf(_F, ...)
+#warning (Printf not implimeted)            
+#endif
 /* Exported functions ------------------------------------------------------- */
-     
-void
-USART_Init();
 
 void
 USART_Write(uint8_t ch);

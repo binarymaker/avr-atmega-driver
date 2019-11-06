@@ -34,13 +34,19 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <avr/io.h>
+#include "mcu-cfg.h"
 #include "regctrl.h"
 #include "common-def.h"
+
+#include "delay.h"   
+#include "pin-manager-cfg.h"
 #include "gpio.h"
+#include "usart.h"
+#include "adc.h"
 #include "i2c.h"
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-#define F_CPU                                                         8000000UL
 /* Exported macro ------------------------------------------------------------*/
 #define _L_(pin)                                                            (0u)
 #define _H_(pin)                                                      BIT((pin))
