@@ -18,17 +18,46 @@
   ******************************************************************************
   \endcond*/
 
-/* Includes ------------------------------------------------------------------*/
-#include "interrupt-manager.h"
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+#ifndef TIMER0_52630038_011d_11ea_a9d0_74dfbf0d835a
+#define TIMER0_52630038_011d_11ea_a9d0_74dfbf0d835a
 
-ISR(TIMER0_OVF_vect)
-{  
-  SYSTIMER_Engin();
-  BIT_Clear(TIFR0, TOV0);
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+/**
+ * \brief Source file version tag
+ *        
+ *        version info: [15:8] main [7:0] beta
+ */
+#define __TIMER0_VERSION      (0x0001u)
+
+/* Includes ------------------------------------------------------------------*/
+#include "mcu.h"
+#include "mcu-cfg.h"
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+
+void
+TIMER0_Start();
+
+void
+TIMER0_Stop();
+
+void
+TIMER0_Write(uint8_t cnt);
+
+uint8_t
+TIMER0_Read();
+
+void
+TIMER0_Reload();
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif /* TIMER0_52630038_011d_11ea_a9d0_74dfbf0d835a */
+

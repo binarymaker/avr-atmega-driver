@@ -32,10 +32,10 @@
 #define MCU_ADC_DRIVER                                                  ENABLE
 #define MCU_UART_DRIVER                                                 ENABLE
 #define MCU_I2C_DRIVER                                                  ENABLE
-#define MCU_SPI_DRIVER                                                  DISABLE
-#define MCU_TIMER0_DRIVER                                               DISABLE
-#define MCU_TIMER1_DRIVER                                               DISABLE
-#define MCU_TIMER2_DRIVER                                               DISABLE
+#define MCU_SPI_DRIVER                                                  ENABLE
+#define MCU_TIMER0_DRIVER                                               ENABLE
+#define MCU_TIMER1_DRIVER                                               ENABLE
+#define MCU_TIMER2_DRIVER                                               ENABLE
 
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
@@ -46,6 +46,8 @@
 #include "adc-cfg.h"
 #include "usart-cfg.h"
 #include "i2c-cfg.h"
+#include "systimer-cfg.h"
+#include "timer0-cfg.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */

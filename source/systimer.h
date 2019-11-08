@@ -18,17 +18,38 @@
   ******************************************************************************
   \endcond*/
 
-/* Includes ------------------------------------------------------------------*/
-#include "interrupt-manager.h"
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+#ifndef SYSTIMER_b05ba9d2_0208_11ea_af61_705a0f25cb51
+#define SYSTIMER_b05ba9d2_0208_11ea_af61_705a0f25cb51
 
-ISR(TIMER0_OVF_vect)
-{  
-  SYSTIMER_Engin();
-  BIT_Clear(TIFR0, TOV0);
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+/**
+ * \brief Source file version tag
+ *        
+ *        version info: [15:8] main [7:0] beta
+ */
+#define __SYSTIMER_VERSION      (0x0001u)
+
+/* Includes ------------------------------------------------------------------*/
+#include "mcu.h"
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* Exported functions ------------------------------------------------------- */
+void
+SYSTIMER_Engin();
+
+time_t
+SYSTIMER_Millis();
+
+void
+SYSTIMER_Delay(time_t ms);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif /* SYSTIMER_b05ba9d2_0208_11ea_af61_705a0f25cb51 */
+

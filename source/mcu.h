@@ -34,6 +34,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "stdint.h"
 #include "mcu-cfg.h"
 #include "regctrl.h"
@@ -62,8 +63,10 @@
 #endif 
    
 #if MCU_TIMER0_DRIVER == ENABLE
+#include "timer0.h"
 #endif 
 
+#include "systimer.h"
 #if MCU_TIMER1_DRIVER == ENABLE
 #endif 
 
@@ -76,6 +79,10 @@
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
+#define CLOCK_CYCLE_PER_MICROSECOND()                          (F_CPU / 1000000)
+#define CLOCK_CYCLE_TO_MICROSECONDS(clk) ((clk) / CLOCK_CYCLE_PER_MICROSECOND())
+#define MICROSECONDS_TO_CLOCK_CYCLE(us)   ((us) * CLOCK_CYCLE_PER_MICROSECOND())
+   
 #define _L_(pin)                                                            (0u)
 #define _H_(pin)                                                      BIT((pin))
 /* Exported functions ------------------------------------------------------- */
