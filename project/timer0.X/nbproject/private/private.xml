@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/config/mcu-cfg.h</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/config/usart-cfg.c</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/mcu.h</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/timer0.h</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/delay.c</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/config/timer0-cfg.c</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/timer0.c</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/project/timer0.X/main.c</file>
+            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/config/timer0-cfg.h</file>
+        </group>
+    </open-files>
+</project-private>
