@@ -1,6 +1,7 @@
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/binarymaker/project-manager-tools.git
+	branch = master
 [submodule "library/emclib"]
 	path = library/emclib
 	url = https://github.com/binarymaker/embclib
