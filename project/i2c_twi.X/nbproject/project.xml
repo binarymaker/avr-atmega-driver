@@ -16,6 +16,8 @@
                 <sourceRootElem>../../source</sourceRootElem>
                 <sourceRootElem>../../library/print</sourceRootElem>
                 <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>../../library/printf/source</sourceRootElem>
+                <sourceRootElem>../../config</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

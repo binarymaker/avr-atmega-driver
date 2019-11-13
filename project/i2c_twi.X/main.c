@@ -38,10 +38,16 @@ int i;
 int
 main()
 {
-  MCU_Init();
+  uint8_t data[5] = {1, 2, 3, 4, 5};
+  
+  PIN_MANAGER_Config();
+  I2C_Config();
 
   DELAY_ms(100);
   
+  
+  I2C_Transmit(0x01, 0x40, data, 5);
+  I2C_Receive(0x01, 0x40, data, 5);
  /* for (i = 0; i < 128; i++)
   {
     I2C_Start();
@@ -49,7 +55,7 @@ main()
     I2C_Stop();
     DELAY_ms(100);
   }*/
-  
+ 
   Oled_Init();
   Oled_SetFont(Font_6x8, 6, 8, 32,127);
   Oled_ConstText("library for", 0, 0);
@@ -57,5 +63,6 @@ main()
   Oled_ConstText("OLED 128x64", 0, 4);
   Oled_ConstText("SSD1306", 0, 6);
   while(1);
+
   return 0;
 }

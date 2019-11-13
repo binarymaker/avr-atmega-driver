@@ -17,8 +17,6 @@
       <itemPath>../../source/adc.h</itemPath>
       <itemPath>../../source/delay.c</itemPath>
       <itemPath>../../source/delay.h</itemPath>
-      <itemPath>../../source/device-config.c</itemPath>
-      <itemPath>../../source/device-config.h</itemPath>
       <itemPath>../../source/gpio.c</itemPath>
       <itemPath>../../source/gpio.h</itemPath>
       <itemPath>../../source/i2c.c</itemPath>
@@ -27,15 +25,34 @@
       <itemPath>../../source/interrupt-manager.h</itemPath>
       <itemPath>../../source/mcu.c</itemPath>
       <itemPath>../../source/mcu.h</itemPath>
-      <itemPath>../../source/pin-manager.c</itemPath>
-      <itemPath>../../source/pin-manager.h</itemPath>
       <itemPath>../../source/usart.c</itemPath>
       <itemPath>../../source/usart.h</itemPath>
-      <itemPath>../../library/print/print.c</itemPath>
       <itemPath>bitmap.h</itemPath>
       <itemPath>font.h</itemPath>
       <itemPath>ssd1306.c</itemPath>
       <itemPath>ssd1306.h</itemPath>
+      <itemPath>../../library/printf/source/print.c</itemPath>
+      <itemPath>../../library/printf/source/print.h</itemPath>
+      <itemPath>../../config/pin-manager-cfg.c</itemPath>
+      <itemPath>../../config/pin-manager-cfg.h</itemPath>
+      <itemPath>../../config/adc-cfg.c</itemPath>
+      <itemPath>../../config/adc-cfg.h</itemPath>
+      <itemPath>../../config/delay-cfg.h</itemPath>
+      <itemPath>../../config/gpio-cfg.h</itemPath>
+      <itemPath>../../config/i2c-cfg.c</itemPath>
+      <itemPath>../../config/i2c-cfg.h</itemPath>
+      <itemPath>../../config/interrupt-manager-cfg.h</itemPath>
+      <itemPath>../../config/mcu-cfg.h</itemPath>
+      <itemPath>../../config/systimer-cfg.c</itemPath>
+      <itemPath>../../config/systimer-cfg.h</itemPath>
+      <itemPath>../../config/timer0-cfg.c</itemPath>
+      <itemPath>../../config/timer0-cfg.h</itemPath>
+      <itemPath>../../config/timer1-cfg.c</itemPath>
+      <itemPath>../../config/timer1-cfg.h</itemPath>
+      <itemPath>../../config/usart-cfg.c</itemPath>
+      <itemPath>../../config/usart-cfg.h</itemPath>
+      <itemPath>../../source/systimer.c</itemPath>
+      <itemPath>../../source/systimer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -47,6 +64,8 @@
     <Elem>../../source</Elem>
     <Elem>../../library/print</Elem>
     <Elem>.</Elem>
+    <Elem>../../library/printf/source</Elem>
+    <Elem>../../config</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -159,7 +178,7 @@
       </AVR-GCC>
       <AVR-Global>
         <property key="common-include-directories"
-                  value="..\..\source;..\..\config;..\..\config\config-embclib;..\..\config\config-print;..\..\library\print;..\..\library\emclib\source;..\..\library\emclib\source\utils;..\..\library\emclib\source\stdint"/>
+                  value="..\..\source;..\..\config;..\..\config\config-embclib;..\..\config\config-printf;..\..\library\printf\source;..\..\library\emclib\source;..\..\library\emclib\source\utils;..\..\library\emclib\source\stdint"/>
         <property key="eep" value="false"/>
         <property key="external-ram-check" value="false"/>
         <property key="hex" value="true"/>

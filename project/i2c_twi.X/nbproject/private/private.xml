@@ -3,18 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/library/print/print.c</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/pin-manager.c</file>
             <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/project/i2c_twi.X/main.c</file>
             <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/project/i2c_twi.X/ssd1306.c</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/usart.h</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/project/i2c_twi.X/ssd1306.h</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/i2c.c</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/library/print/print.h</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/project/i2c_twi.X/font.h</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/i2c.h</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/mcu.c</file>
-            <file>file:/F:/GOK/Bridge/Binarymaker-library/atmega-driver/source/usart.c</file>
         </group>
     </open-files>
 </project-private>

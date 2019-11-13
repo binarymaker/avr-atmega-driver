@@ -35,27 +35,55 @@
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
 /* Exported types ------------------------------------------------------------*/
+typedef enum
+{
+  I2C_FAILED = 0,
+  I2C_SUCCESS,
+  I2C_ARBT_FAILED,
+  I2C_DEVICE_FAILED,
+  I2C_DATA_WRITE_FAILED,
+  I2C_DATA_READ_FAILED
+}i2c_status_et;
+
+typedef enum
+{
+  I2C_ACK = 0,
+  I2C_NACK
+}i2c_ack_et;
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
+#if (I2C_STATUS_RETURN == ENABLE)
+i2c_status_et
+#else
 void
+#endif
 I2C_Start();
 
+
+#if (I2C_STATUS_RETURN == ENABLE)
+i2c_status_et
+#else
 void
+#endif
 I2C_Write(uint8_t data);
 
-uint8_t
-I2C_Read();
+#if (I2C_STATUS_RETURN == ENABLE)
+i2c_status_et
+#else
+void
+#endif
+I2C_Read(uint8_t* data, i2c_ack_et ack);
 
 void
 I2C_Stop();
 
 void
-I2C_Transmit(uint8_t slaveAddr, uint8_t *data, uint16_t size);
+I2C_Transmit(uint8_t slaveAddr, uint8_t memAddr, uint8_t *data, uint16_t size);
 
 void
-I2C_Receive(uint8_t slaveAddr, uint8_t *data, uint16_t size);
+I2C_Receive(uint8_t slaveAddr, uint8_t memAddr, uint8_t *data, uint16_t size);
 
 #ifdef __cplusplus
 }

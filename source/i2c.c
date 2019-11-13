@@ -29,27 +29,99 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
+#if (I2C_STATUS_RETURN == ENABLE)
+i2c_status_et
+#else
 void
+#endif
 I2C_Start()
 {
   TWCR = BIT(TWINT) | BIT(TWSTA) | BIT(TWEN);
-  while ( BIT_IsClear(TWCR, TWINT) ); 
+  while ( BIT_IsClear(TWCR, TWINT) );
+
+#if (I2C_STATUS_RETURN == ENABLE)
+  switch (TW_STATUS)
+  {
+    case TW_START:
+      return I2C_SUCCESS;
+      break;
+    default:
+      return I2C_FAILED;
+      break;
+  }
+#endif
 }
 
+
+#if (I2C_STATUS_RETURN == ENABLE)
+i2c_status_et
+#else
 void
+#endif
 I2C_Write(uint8_t data)
 {
   TWDR = data;
   TWCR = BIT(TWINT) |  BIT(TWEN);
   while ( BIT_IsClear(TWCR, TWINT) );
+
+#if (I2C_STATUS_RETURN == ENABLE)
+  switch (TW_STATUS)
+  {
+    case TW_MT_SLA_ACK:
+      return I2C_SUCCESS;
+      break;
+    case TW_MT_DATA_ACK:
+      return I2C_SUCCESS;
+      break;
+    case TW_MT_SLA_NACK:
+      return I2C_DEVICE_FAILED;
+      break;
+    case TW_MT_DATA_NACK:
+      return I2C_DATA_WRITE_FAILED;
+      break;
+    case TW_MT_ARB_LOST:
+      return I2C_ARBT_FAILED;
+      break;
+    default:
+      return I2C_FAILED;
+      break;
+  }
+#endif
 }
 
-uint8_t
-I2C_Read()
+#if (I2C_STATUS_RETURN == ENABLE)
+i2c_status_et
+#else
+void
+#endif
+I2C_Read(uint8_t* data, i2c_ack_et ack)
 {
-  TWCR = BIT(TWINT) |  BIT(TWEN) | BIT(TWEA);
+  if (I2C_ACK == ack)
+  {
+    TWCR = BIT(TWINT) |  BIT(TWEN) | BIT(TWEA);
+  }
+  else
+  {
+    TWCR = BIT(TWINT) |  BIT(TWEN);
+  }
+
   while ( BIT_IsClear(TWCR, TWINT) );
-  return (TWDR);
+
+#if (I2C_STATUS_RETURN == ENABLE)
+  switch (TW_STATUS)
+  {
+    case TW_MR_DATA_ACK:
+      *data = TWDR;
+      return I2C_SUCCESS;
+      break;
+    case TW_MR_DATA_NACK:
+      return I2C_DEVICE_FAILED;
+      break;
+    default:
+      return I2C_FAILED;
+      break;
+  }
+#endif
 }
 
 void
@@ -59,12 +131,14 @@ I2C_Stop()
 }
 
 void
-I2C_Transmit(uint8_t slaveAddr, uint8_t *data, uint16_t size)
+I2C_Transmit(uint8_t slaveAddr, uint8_t memAddr, uint8_t *data, uint16_t size)
 {
   uint16_t i_u16;
+
   I2C_Start();
   I2C_Write(slaveAddr << 1);
-  
+  I2C_Write(memAddr);
+
   for (i_u16 = 0; i_u16 < size; i_u16++)
   {
     I2C_Write(data[i_u16]);
@@ -74,15 +148,21 @@ I2C_Transmit(uint8_t slaveAddr, uint8_t *data, uint16_t size)
 }
 
 void
-I2C_Receive(uint8_t slaveAddr, uint8_t *data, uint16_t size)
+I2C_Receive(uint8_t slaveAddr, uint8_t memAddr, uint8_t *data, uint16_t size)
 {
   uint16_t i_u16;
-  
+
+  I2C_Start();
+  I2C_Write(slaveAddr << 1);
+  I2C_Write(memAddr);
+
   I2C_Start();
   I2C_Write((slaveAddr << 1) | 0x01);
-  for (i_u16 = 0; i_u16 < size; i_u16++)
+
+  for (i_u16 = 0; i_u16 < size - 1; i_u16++)
   {
-    data[i_u16+1] = I2C_Read();
+    I2C_Read(&data[i_u16], I2C_ACK );
   }
+  I2C_Read(&data[size - 1], I2C_NACK );
   I2C_Stop();
 }
