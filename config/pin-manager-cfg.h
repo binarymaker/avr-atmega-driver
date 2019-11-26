@@ -26,6 +26,7 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "mcu.h"
 /* Exported types ------------------------------------------------------------*/
 typedef enum
 {
@@ -35,13 +36,82 @@ typedef enum
   P_D0, P_D1, P_D2, P_D3, P_D4, P_D5, P_D6, P_D7,
   P_NC = 0xff
 }pin_et;
+
+enum intSense_e
+{
+INT_SENSE_LOW     ,
+INT_SENSE_CHANGE  ,
+INT_SENSE_FALLING ,
+INT_SENSE_RISING
+};
 /* Exported constants --------------------------------------------------------*/
 #define NUM_PIN_PER_PORT                                                      8
 /* Exported macro ------------------------------------------------------------*/
+#define _I_(pin)                                                            (0u)
+#define _O_(pin)                                                      BIT((pin))
 /* Exported functions ------------------------------------------------------- */
 
-void
-PIN_MANAGER_Config();
+STATIC_INLINE void
+PIN_MANAGER_Config()
+{
+  /**
+   * Port Direction -----------------------------------------------------------
+   * _O_ - Output
+   * _I_ - Input      
+   */
+  DDRB    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;  
+  DDRC    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;    
+  DDRD    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;
+  
+  /**
+   * Port value ---------------------------------------------------------------
+   *       INPUT | OUTPUT
+   * _L_ - Low     Open drain
+   * _H_ - High    PullUp
+   */
+  PORTB   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PORTC   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PORTD   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+
+  /**
+   * External interrupts ------------------------------------------------------
+   * EIMSK
+   *   _L_ - Disable
+   *   _H_ - Enable
+   * EICRC
+   *   INT_SENSE_LOW_LEVEL
+   *   INT_SENSE_ANY_EDGE
+   *   INT_SENSE_FALLING_EDGE
+   *   INT_SENSE_RISING_EDGE
+   */
+  /*                   INT1                 |         INT0                    */
+  EIMSK   =            _L_(1)               |        _L_(0)                  ;
+  EICRA   =    (INT_SENSE_RISING << 2)      |    INT_SENSE_RISING            ; 
+  
+  /**
+   * Pin change interrupt -----------------------------------------------------
+   * PCIRC
+   *   _L_ - Disable
+   *   _H_ - Enable
+   */
+  /*              PCIE2      |     PCIE1      |     PCIE0                   */
+  PCICR   =       _L_(2)     |     _L_(1)     |     _L_(0)                    ;
+  
+  /**
+   * Pin change interrupt channels
+   * _L_ - Disable particular pin
+   * _H_ - Enable particular pin
+   */
+  /**
+   * PCINT0->|   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
+   * PCINT1->|       |   14  |   13  |   12  |   11  |   10  |   9   |   8   |
+   * PCINT2->|   23  |   22  |   21  |   20  |   19  |   18  |   17  |   16  |     
+   */
+  PCMSK0  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PCMSK1  =            _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PCMSK2  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  
+}
 
 #ifdef __cplusplus
 }

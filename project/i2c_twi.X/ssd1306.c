@@ -35,9 +35,9 @@ uint cnt_character = 0;
 // Initializes the OLED module.
 //==============================================================================
 void Oled_Init(void){
-OLED_ResetPin(0);
+//OLED_ResetPin(0);
 Oled_Delay();
-Oled_Reset();
+//Oled_Reset();
 Oled_Command(0xAE);                     // Set Display OFF
 Oled_Command(0x81); Oled_Command(0xCF); // Set Contrast Control
 Oled_Command(0xA4);                     // Entire Display ON
