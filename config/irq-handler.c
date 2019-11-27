@@ -19,7 +19,6 @@
   \endcond*/
 
 /* Includes ------------------------------------------------------------------*/
-#include "mcu.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -27,20 +26,3 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-int
-main()
-{
-  GPIO_PinDirection(P_C4, GPIO_PIN_OUTPUT);
-  GPIO_PinDirection(P_C5, GPIO_PIN_OUTPUT);
-  
-  while(1)
-  {
-    GPIO_PinToggle(P_C4);
-    
-    GPIO_PinWrite(P_C5, LOW);
-    DELAY_ms(100);
-    GPIO_PinWrite(P_C5, HIGH);
-    DELAY_ms(100);
-  }
-  return 0;
-}

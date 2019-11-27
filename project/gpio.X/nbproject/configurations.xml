@@ -20,7 +20,7 @@
       <itemPath>../../source/delay.c</itemPath>
       <itemPath>../../source/gpio.c</itemPath>
       <itemPath>../../source/mcu.c</itemPath>
-      <itemPath>../../config/gpio-cfg.h</itemPath>
+      <itemPath>../../config/mcu-cfg.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

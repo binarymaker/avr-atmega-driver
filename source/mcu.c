@@ -31,7 +31,7 @@ void
 MCU_Init()
 {
   PIN_MANAGER_Config();
-  ADC_Config();
-  USART_Config();
-  I2C_Config();
+//  ADC_Config();
+//  USART_Config();
+//  I2C_Config();
 }

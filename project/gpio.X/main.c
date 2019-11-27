@@ -18,23 +18,30 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef TIMER1_55bb8f22_011d_11ea_b9c8_74dfbf0d835a
-#define TIMER1_55bb8f22_011d_11ea_b9c8_74dfbf0d835a
-
-#ifdef __cplusplus
- extern "C" {
-#endif
-
 /* Includes ------------------------------------------------------------------*/
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
+#include "mcu.h"
+#include "gpio.h"
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
 
-
-#ifdef __cplusplus
+int
+main()
+{
+  GPIO_PinDirection(P_C4, GPIO_PIN_OUTPUT);
+  GPIO_PinDirection(P_C5, GPIO_PIN_OUTPUT);
+  
+  while(1)
+  {
+    GPIO_PinToggle(P_C4);
+    
+    GPIO_PinWrite(P_C5, LOW);
+    DELAY_ms(100);
+    GPIO_PinWrite(P_C5, HIGH);
+    DELAY_ms(100);
+  }
+  return 0;
 }
-#endif
-
-#endif /* TIMER1_55bb8f22_011d_11ea_b9c8_74dfbf0d835a */
-

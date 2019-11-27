@@ -18,17 +18,23 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef SYSTIMER_b09c4594_0208_11ea_b4f8_705a0f25cb51
-#define SYSTIMER_b09c4594_0208_11ea_b4f8_705a0f25cb51
+#ifndef IRQ_HANDLER_9aed5eda_10ec_11ea_b559_705a0f25cb51
+#define IRQ_HANDLER_9aed5eda_10ec_11ea_b559_705a0f25cb51
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
+/**
+ * \brief Source file version tag
+ *        
+ *        version info: [15:8] main [7:0] beta
+ */
+#define __IRQ_HANDLER_VERSION      (0x0001u)
+
 /* Includes ------------------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-#define MICROSECONDS_PER_SYSTIMER_OVERFLOW                               (2000U)
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
@@ -37,5 +43,5 @@
 }
 #endif
 
-#endif /* SYSTIMER_b09c4594_0208_11ea_b4f8_705a0f25cb51 */
+#endif /* IRQ_HANDLER_9aed5eda_10ec_11ea_b559_705a0f25cb51 */
 

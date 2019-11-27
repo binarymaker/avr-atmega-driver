@@ -39,9 +39,9 @@
 #include "mcu-cfg.h"
 #include "regctrl.h"
 #include "common-def.h"
-
-#include "delay.h"   
-#include "pin-manager-cfg.h"
+#include "complier-cfg.h"
+   
+#include "delay.h"
 
 #if MCU_GPIO_DRIVER == ENABLE
 #include "gpio.h"
@@ -82,9 +82,11 @@
 #define CLOCK_CYCLE_PER_MICROSECOND()                          (F_CPU / 1000000)
 #define CLOCK_CYCLE_TO_MICROSECONDS(clk) ((clk) / CLOCK_CYCLE_PER_MICROSECOND())
 #define MICROSECONDS_TO_CLOCK_CYCLE(us)   ((us) * CLOCK_CYCLE_PER_MICROSECOND())
-   
+
 #define _L_(pin)                                                            (0u)
 #define _H_(pin)                                                      BIT((pin))
+#define _I_(pin)                                                            (0u)
+#define _O_(pin)                                                      BIT((pin))
 /* Exported functions ------------------------------------------------------- */
 void
 MCU_Init();

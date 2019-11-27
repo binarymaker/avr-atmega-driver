@@ -34,7 +34,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "common-def.h"
-#include "pin-manager-cfg.h"
+#include "mcu.h"
 /* Exported types ------------------------------------------------------------*/
 typedef enum
 {
