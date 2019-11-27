@@ -28,28 +28,40 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
+/* -------------------------------------------------------------------------- */
+/*                        GPIO initialization settings                        */
+/* -------------------------------------------------------------------------- */
+
 void
-PIN_MANAGER_Config()
+GPIO_Config()
 {
   /**
-   * Port Direction -----------------------------------------------------------
+   * Port Direction ------------------------------------------------------------
    * _O_ - Output
    * _I_ - Input      
    */
-  DDRB    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;  
-  DDRC    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;    
-  DDRD    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0) ;
+  DDRB    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0)  ; 
+  DDRC    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0)  ; 
+  DDRD    =    _O_(7)| _O_(6)| _O_(5)| _O_(4)| _O_(3)| _O_(2)| _O_(1)| _O_(0)  ;
   
   /**
-   * Port value ---------------------------------------------------------------
+   * Port value ----------------------------------------------------------------
    *       INPUT | OUTPUT
    * _L_ - Low     Open drain
    * _H_ - High    PullUp
    */
-  PORTB   =    _H_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
-  PORTC   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
-  PORTD   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PORTB   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0)  ;
+  PORTC   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0)  ;
+  PORTD   =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0)  ;
+}
 
+/* -------------------------------------------------------------------------- */
+/*                  External and pin change interrupt Setting                 */
+/* -------------------------------------------------------------------------- */
+
+void
+EXTERNAL_INTERRUPT_config(void)
+{
   /**
    * External interrupts ------------------------------------------------------
    * EIMSK
@@ -60,40 +72,45 @@ PIN_MANAGER_Config()
    *   INT_SENSE_ANY_EDGE
    *   INT_SENSE_FALLING_EDGE
    *   INT_SENSE_RISING_EDGE
+   *
+   *                   INT1                 |         INT0                      
    */
-  /*                   INT1                 |         INT0                    */
-  EIMSK   =            _L_(1)               |        _L_(0)                  ;
-  EICRA   =    (INT_SENSE_RISING << 2)      |    INT_SENSE_RISING            ; 
-  
+  EIMSK   =            _L_(1)               |        _L_(0)                    ;
+  EICRA   =    (INT_SENSE_RISING << 2)      |    INT_SENSE_RISING              ; 
+
   /**
-   * Pin change interrupt -----------------------------------------------------
+   * Pin change interrupt ------------------------------------------------------
    * PCIRC
    *   _L_ - Disable
    *   _H_ - Enable
+   * 
+   *              PCIE2      |     PCIE1      |     PCIE0                       
    */
-  /*              PCIE2      |     PCIE1      |     PCIE0                   */
-  PCICR   =       _L_(2)     |     _L_(1)     |     _L_(0)                    ;
+  PCICR   =       _L_(2)     |     _L_(1)     |     _L_(0)                     ;
   
   /**
-   * Pin change interrupt channels
+   * Pin change interrupt channels ---------------------------------------------
    * _L_ - Disable particular pin
    * _H_ - Enable particular pin
-   */
-  /**
+   * 
    * PCINT0->|   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
    * PCINT1->|       |   14  |   13  |   12  |   11  |   10  |   9   |   8   |
-   * PCINT2->|   23  |   22  |   21  |   20  |   19  |   18  |   17  |   16  |     
+   * PCINT2->|   23  |   22  |   21  |   20  |   19  |   18  |   17  |   16  |
    */
-  PCMSK0  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
-  PCMSK1  =            _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
-  PCMSK2  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0) ;
+  PCMSK0  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0)  ;
+  PCMSK1  =            _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0)  ;
+  PCMSK2  =    _L_(7)| _L_(6)| _L_(5)| _L_(4)| _L_(3)| _L_(2)| _L_(1)| _L_(0)  ;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                         ADC initialization setting                         */
+/* -------------------------------------------------------------------------- */
 
 void
 ADC_Config()
 {
   /**
-   * ADC module activate ------------------------------------------------------
+   * ADC module activate -------------------------------------------------------
    *            
    *            ADEN 
    * Enable  -  _H_
@@ -102,7 +119,7 @@ ADC_Config()
   ADCSRA    =    _H_(ADEN)                                                     ;
   
   /**
-   * ADC prescaler selection --------------------------------------------------
+   * ADC prescaler selection ---------------------------------------------------
    *  clk
    * Divider       ADPS2   |   ADPS1  |   ADPS0
    *   2     -      _L_    |   _L_    |    _L_
@@ -116,9 +133,8 @@ ADC_Config()
    */
   ADCSRA   |=    _L_(ADPS2) |   _L_(ADPS1)   |   _L_(ADPS0)                    ;
   
-  
   /**
-   * ADC result data justify --------------------------------------------------
+   * ADC result data justify ---------------------------------------------------
    *          
    *          ADLAR                  ADCH    ADCL
    * Right  -  _L_             ex: 000000DD DDDDDDDD
@@ -127,7 +143,7 @@ ADC_Config()
   ADMUX     =    _L_(ADLAR)                                                    ;
   
   /**
-   * ADC Trigger mode ---------------------------------------------------------
+   * ADC Trigger mode ----------------------------------------------------------
    * 
    *           ADATE 
    * Enable  -  _H_
@@ -150,14 +166,15 @@ ADC_Config()
   ADCSRB   |=    _L_(ADTS2)  |   _L_(ADTS1)   |   _L_(ADTS0)                   ;
   
   /**
-   * ADC Channel enable / Digital pin disable
+   * ADC Channel enable / Digital pin disable ----------------------------------
    *              
    * Analog pin   -   _H_
    * Digital pin  -   _L_ 
    */
   DIDR0     =   _L_(5) | _L_(4) | _L_(3) | _L_(2) | _L_(1) | _H_(0)            ;
+
   /**
-   * ADC Interrupt activate ---------------------------------------------------
+   * ADC Interrupt activate ----------------------------------------------------
    * 
    *            ADIE 
    * Enable  -  _H_
@@ -166,22 +183,26 @@ ADC_Config()
   ADCSRA   |=    _L_(ADIE)                                                     ;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                        USART initialization setting                        */
+/* -------------------------------------------------------------------------- */
+
 void
 USART_Config()
 {
   /**
-   * USART transmit and receive activation
+   * USART transmit and receive activation -------------------------------------
    * 
    *          Receive | Transmit
    *           RXEN0  |  TXEN0
    * Enable  -  _H_   |   _H_
    * Disable -  _L_   |   _L_
    */
-  UCSR0B    =     _L_(RXEN0)    |     _H_(TXEN0)                              ;
-  UCSR0B   |=     _L_(RXCIE0)   |     _L_(TXCIE0)     |   _L_(UDRIE0)         ;
+  UCSR0B    =     _L_(RXEN0)    |     _H_(TXEN0)                               ;
+  UCSR0B   |=     _L_(RXCIE0)   |     _L_(TXCIE0)     |   _L_(UDRIE0)          ;
   
   /**
-   * Frame Character size -----------------------------------------------------
+   * Frame Character size ------------------------------------------------------
    * 
    *         UCSZ02 |  UCSZ01 |  UCSZ00
    * 5 bit -   _L_  |   _L_   |   _L_
@@ -190,20 +211,20 @@ USART_Config()
    * 8 bit -   _L_  |   _H_   |   _H_
    * 9 bit -   _H_  |   _H_   |   _H_
    */
-  UCSR0C    =     _H_(UCSZ01)   |     _H_(UCSZ00)                             ;
-  UCSR0B   |=     _L_(UCSZ02)                                                 ;                
+  UCSR0C    =     _H_(UCSZ01)   |     _H_(UCSZ00)                              ;
+  UCSR0B   |=     _L_(UCSZ02)                                                  ;
   
   /**
-   * Frame Stop bit size ------------------------------------------------------
+   * Frame Stop bit size -------------------------------------------------------
    * 
    *         USBS0
    * 1 bit -  _L_
    * 2 nit -  _H_
    */
-  UCSR0C   |=     _L_(USBS0)                                                  ;
+  UCSR0C   |=     _L_(USBS0)                                                   ;
   
   /**
-   * Frame Parity bit setting -------------------------------------------------
+   * Frame Parity bit setting --------------------------------------------------
    * 
    *            UMP01  |  UMP00
    * Disable -   _L_   |   _L_
@@ -211,19 +232,23 @@ USART_Config()
    * Odd     -   _H_   |   _H_
    */
   
-  UCSR0C   |=     _L_(UMP01)    |    _L_(UMP01)                               ;
+  UCSR0C   |=     _L_(UMP01)    |    _L_(UMP01)                                ;
   
   /**
-   * Baud rate register value calculation -------------------------------------
+   * Baud rate register value calculation --------------------------------------
    */
-  UBRR0     =    USART_BAUD_REG_CALC(USART_BAUDRATE)                          ;
+  UBRR0     =    USART_BAUD_REG_CALC(USART_BAUDRATE)                           ;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                       I2C/TWI initialization setting                       */
+/* -------------------------------------------------------------------------- */
 
 void
 I2C_Config()
 {
   /**
-   * I2C Prescaler -----------------------------------------------------------
+   * I2C Prescaler -------------------------------------------------------------
    * 
    * Prescale    PWPS1   |  PWPS0
    *    1     -   _L_    |   _L_
@@ -234,14 +259,17 @@ I2C_Config()
   TWSR     =    _L_(TWPS1)    |    _L_(TWPS0)                                  ;
   
   TWBR     =    I2C_CLOCK_BITRATE_REG_CALC()                                   ;
-  
 }
+
+/* -------------------------------------------------------------------------- */
+/*                        TIMER0 initialization setting                       */
+/* -------------------------------------------------------------------------- */
 
 void
 TIMER0_Config()
 {
   /**
-   * Timer clock selection
+   * Timer clock selection -----------------------------------------------------
    * 
    * clk div           CS02    |   CS01    |   CS00
    * timer off       -  _L_    |    _L_    |    _L_
@@ -256,7 +284,7 @@ TIMER0_Config()
   TCCR0B    =     _L_(CS02)    |    _L_(CS01)    |    _L_(CS00)                ;
   
   /**
-   * Timer0 count value
+   * Timer0 count value --------------------------------------------------------
    */
   TCNT0     =   0x00                                                           ;
   
@@ -267,7 +295,7 @@ TIMER0_Config()
   OCR0B     =   0xff                                                           ;
   
  /**
-   * Waveform generation mode 
+   * Waveform generation mode --------------------------------------------------
    * Common for OC0A and OC0B
    * 
    * Mode | TimerMode  | TOP       WGM02   |   WGM01   |   WGM00
@@ -286,7 +314,7 @@ TIMER0_Config()
   TCCR0B   |=     _L_(WGM02)                                                   ;
   
   /**
-   * OC0A - Compare match output mode
+   * OC0A - Compare match output mode ------------------------------------------
    *                               Phase
    * non-PWM    |   Fast-PWM   | Correct-PWM    COM0A1   |   COM0A0
    * Disconnect |  Disconnect  |  Disconnect  -   _L_    |    _L_
@@ -299,7 +327,7 @@ TIMER0_Config()
   TCCR0A   |=     _L_(COM0A1)    |    _L_(COM0A0)                              ;
   
   /**
-   * OC0B - Compare match output mode
+   * OC0B - Compare match output mode ------------------------------------------
    *                              Phase
    * non-PWM    |   Fast-PWM   | Correct-PWM    COM0B1   |   COM0B0
    * Disconnect |  Disconnect  |  Disconnect  -   _L_    |    _L_
@@ -310,7 +338,7 @@ TIMER0_Config()
   TCCR0A   |=     _L_(COM0B1)    |    _L_(COM0B0)                              ;
     
   /**
-   * Timer0 interrupt activation
+   * Timer0 interrupt activation -----------------------------------------------
    *           
    *             overflow  |  match A  |  match B
    *              TOIE0    |  OCIE0A   |  OCIE0B

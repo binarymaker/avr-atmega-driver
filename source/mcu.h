@@ -40,7 +40,6 @@
 #include "regctrl.h"
 #include "common-def.h"
 #include "complier-cfg.h"
-   
 #include "delay.h"
 
 #if MCU_GPIO_DRIVER == ENABLE
@@ -72,9 +71,6 @@
 
 #if MCU_TIMER2_DRIVER == ENABLE
 #endif 
-    
- 
- 
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

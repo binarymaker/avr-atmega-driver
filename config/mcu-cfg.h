@@ -25,9 +25,9 @@
  extern "C" {
 #endif
 
-#define F_CPU                                                         8000000UL
+#define F_CPU                                                        (8000000UL)
    
-#define MCU_GPIO_DRIVER                                                 ENABLE   
+#define MCU_GPIO_DRIVER                                                 ENABLE 
 #define MCU_ADC_DRIVER                                                  DISABLE
 #define MCU_UART_DRIVER                                                 DISABLE
 #define MCU_I2C_DRIVER                                                  DISABLE
@@ -36,10 +36,11 @@
 #define MCU_TIMER1_DRIVER                                               DISABLE
 #define MCU_TIMER2_DRIVER                                               DISABLE
 
-/* SYSTIMER Driver ############################################################*/
+/* ----------------------------- SYSTIMER Driver ---------------------------- */
+
 #define MICROSECONDS_PER_SYSTIMER_OVERFLOW                               (2000U)
 
-/* GPIO Driver settings ######################################################*/
+/* ------------------------------- GPIO Driver ------------------------------ */
 typedef enum
 {
   P_A0, P_A1, P_A2, P_A3, P_A4, P_A5, P_A6, P_A7,
@@ -49,6 +50,13 @@ typedef enum
   P_NC = 0xff
 }pin_et;
 
+#define NUM_PIN_PER_PORT                                                      8
+
+void
+GPIO_Config();
+
+/* ---------------- External and pin change interrupt Driver ---------------- */
+
 enum intSense_e
 {
 INT_SENSE_LOW     ,
@@ -57,23 +65,26 @@ INT_SENSE_FALLING ,
 INT_SENSE_RISING
 };
 
-#define NUM_PIN_PER_PORT                                                      8
-
 void
-PIN_MANAGER_Config();
+EXTERNAL_INTERRUPT_config(void);
 
-/* ADC Driver #################################################################*/
+/* ------------------------------- ADC Driver ------------------------------- */
+
 void
 ADC_Config();
 
-/* USART Driver ###############################################################*/
+/* ------------------------------ USART Driver ------------------------------ */
+
 #define USART_BAUDRATE                                                   9600UL
 #define USART_PRINTF_REDIRECT
 #define USART_BAUD_REG_CALC(baud)        (uint16_t)((F_CPU / (16 * (baud))) - 1)
 #define USART_BAUD_REG_2X_CALC(baud)      (uint16_t)((F_CPU / (8 * (baud))) - 1)
+
 void
 USART_Config();
-/* I2C Driver ################################################################*/
+
+/* ------------------------------- I2C Driver ------------------------------- */
+
 #define I2C_CLOCK_FREQ                                                (400000UL)
 #define I2C_STATUS_RETURN                                               DISABLE
 /*
@@ -85,9 +96,14 @@ USART_Config();
                           ( (F_CPU / (I2C_CLOCK_FREQ * I2C_PRESCALE) - 16 ) / 2)
 void
 I2C_Config();
-/* TIMER0 Driver ###############################################################*/
+
+/* ------------------------------ TIMER0 Driver ----------------------------- */
+
 void
 TIMER0_Config();
+
+/* -------------------------------------------------------------------------- */
+
 
 #ifdef __cplusplus
 }
