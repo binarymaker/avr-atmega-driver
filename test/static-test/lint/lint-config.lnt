@@ -1,0 +1,3 @@
+-setenv(PROJECT_DIR="f:\GOK\Bridge\Binarymaker-library\atmega-driver")
+-setenv(CUSTOM_LINT_DIR="f:\GOK\Bridge\Binarymaker-library\atmega-driver\test\static-test\lint")
+%CUSTOM_LINT_DIR%\lint-settings.lnt

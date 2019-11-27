@@ -1,0 +1,14 @@
+-i%COMPILER_DIR%
+-i"C:\Program Files (x86)\Microchip\avr\avr8-gnu-toolchain-win32_x86\lib\gcc\avr\5.4.0\include\"
+
+-i%PROJECT_DIR%\source\
+
+-i%PROJECT_DIR%\config\
+-i%PROJECT_DIR%\config\config-embclib\
+-i%PROJECT_DIR%\config\config-printf\
+
+-i%PROJECT_DIR%\library\emclib\source\
+-i%PROJECT_DIR%\library\emclib\source\stdint\
+-i%PROJECT_DIR%\library\emclib\source\utils\
+
+-i%PROJECT_DIR%\library\printf\source\

@@ -1,0 +1,5 @@
+-e9026      //function like macro
+-elib(9026)
+
+-e9059      //C comment contains C++ comment [MISRA 2012 Rule 3.1, required]
+-elib(9059)
