@@ -42,35 +42,30 @@
 #include "complier-cfg.h"
 #include "delay.h"
 
-#if MCU_GPIO_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(GPIO)
 #include "gpio.h"
 #endif
 
-#if MCU_UART_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(USART)
 #include "usart.h"
 #endif
 
-#if MCU_ADC_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(ADC)
 #include "adc.h"
 #endif
 
-#if MCU_I2C_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(I2C)
 #include "i2c.h"
 #endif
 
-#if MCU_SPI_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(SPI)
 #endif 
    
-#if MCU_TIMER0_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(TIMER0)
 #include "timer0.h"
 #endif 
 
 #include "systimer.h"
-#if MCU_TIMER1_DRIVER == ENABLE
-#endif 
-
-#if MCU_TIMER2_DRIVER == ENABLE
-#endif 
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

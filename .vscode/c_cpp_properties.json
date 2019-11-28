@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}",
-                "C:/Program Files (x86)/Microchip/xc8/v2.10/avr/avr/include/*"
+                "C:/Program Files (x86)/Microchip/avr/avr8-gnu-toolchain-win32_x86/avr/include/*",
+                "C:/Program Files (x86)/Microchip/avr/avr8-gnu-toolchain-win32_x86/avr/include/avr/*"
             ],
             "defines": ["__AVR_ATmega328P__"
             ],
@@ -12,7 +13,8 @@
             "browse": {
                 "path": [
                     "${workspaceFolder}",
-                    "C:/Program Files (x86)/Microchip/xc8/v2.10/avr/avr/include/*"
+                    "C:/Program Files (x86)/Microchip/avr/avr8-gnu-toolchain-win32_x86/avr/include/*",
+                    "C:/Program Files (x86)/Microchip/avr/avr8-gnu-toolchain-win32_x86/avr/include/avr/*"
                 ],
                 "databaseFilename": "",
                 "limitSymbolsToIncludedHeaders": true

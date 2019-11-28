@@ -26,8 +26,8 @@
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
-#define WHICH_PORT(pinId)                           ((pinId) / NUM_PIN_PER_PORT)
-#define WHICH_PIN(pinId)                            ((pinId) % NUM_PIN_PER_PORT)
+#define WHICH_PORT(pinId)                          ((pinId) / GPIO_PIN_PER_PORT)
+#define WHICH_PIN(pinId)                           ((pinId) % GPIO_PIN_PER_PORT)
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -181,5 +181,4 @@ GPIO_PinToggle(pin_et pin)
   }
   
   BIT_Toggle(*dataOutReg, WHICH_PIN(pin));
-  
 }
