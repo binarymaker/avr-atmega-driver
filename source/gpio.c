@@ -35,30 +35,30 @@
 void
 GPIO_PinDirection(pin_et pin, pinDirection_et dir)
 {
-  SFR *directionReg = NULL;
+  sfr_t *directionReg = NULL;
   switch(WHICH_PORT(pin))
   {
 #if defined(DDRA)
     case 0:
-      directionReg = (SFR*)&DDRA;
+      directionReg = (sfr_t*)&DDRA;
       break;
 #endif
 
 #if defined(DDRB)
     case 1:
-      directionReg = (SFR*)&DDRB;
+      directionReg = (sfr_t*)&DDRB;
       break;
 #endif
       
 #if defined(DDRC)
     case 2:
-      directionReg = (SFR*)&DDRC;
+      directionReg = (sfr_t*)&DDRC;
       break;
 #endif
       
 #if defined(DDRD)
     case 3:
-      directionReg = (SFR*)&DDRD;
+      directionReg = (sfr_t*)&DDRD;
       break;
 #endif
     default:
@@ -72,31 +72,31 @@ GPIO_PinDirection(pin_et pin, pinDirection_et dir)
 void
 GPIO_PinWrite(pin_et pin, state_et state)
 {
-  SFR *dataOutReg = NULL;
+  sfr_t *dataOutReg = NULL;
   
   switch(WHICH_PORT(pin))
   {
 #if defined(PORTA)
     case 0:
-      dataOutReg = (SFR*)&PORTA;
+      dataOutReg = (sfr_t*)&PORTA;
       break;
 #endif
 
 #if defined(PORTB)
     case 1:
-      dataOutReg = (SFR*)&PORTB;
+      dataOutReg = (sfr_t*)&PORTB;
       break;
 #endif
       
 #if defined(PORTC)
     case 2:
-      dataOutReg = (SFR*)&PORTC;
+      dataOutReg = (sfr_t*)&PORTC;
       break;
 #endif
       
 #if defined(PORTD)
     case 3:
-      dataOutReg = (SFR*)&PORTD;
+      dataOutReg = (sfr_t*)&PORTD;
       break;
 #endif
     default:
@@ -109,32 +109,32 @@ GPIO_PinWrite(pin_et pin, state_et state)
 state_et
 GPIO_PinRead(pin_et pin)
 {
-  SFR *dataInReg = NULL;
+  sfr_t *dataInReg = NULL;
   state_et pinState;
   
   switch(WHICH_PORT(pin))
   {
 #if defined(PINA)
     case 0:
-      dataInReg = (SFR*)&PINA;
+      dataInReg = (sfr_t*)&PINA;
       break;
 #endif
 
 #if defined(PINB)
     case 1:
-      dataInReg = (SFR*)&PINB;
+      dataInReg = (sfr_t*)&PINB;
       break;
 #endif
       
 #if defined(PINC)
     case 2:
-      dataInReg = (SFR*)&PINC;
+      dataInReg = (sfr_t*)&PINC;
       break;
 #endif
       
 #if defined(PIND)
     case 3:
-      dataInReg = (SFR*)&PIND;
+      dataInReg = (sfr_t*)&PIND;
       break;
 #endif
     default:
@@ -149,31 +149,31 @@ GPIO_PinRead(pin_et pin)
 void
 GPIO_PinToggle(pin_et pin)
 {
-  SFR *dataOutReg = NULL;
+  sfr_t *dataOutReg = NULL;
   
   switch(WHICH_PORT(pin))
   {
 #if defined(PORTA)
     case 0:
-      dataOutReg = (SFR*)&PORTA;
+      dataOutReg = (sfr_t*)&PORTA;
       break;
 #endif
 
 #if defined(PORTB)
     case 1:
-      dataOutReg = (SFR*)&PORTB;
+      dataOutReg = (sfr_t*)&PORTB;
       break;
 #endif
       
 #if defined(PORTC)
     case 2:
-      dataOutReg = (SFR*)&PORTC;
+      dataOutReg = (sfr_t*)&PORTC;
       break;
 #endif
       
 #if defined(PORTD)
     case 3:
-      dataOutReg = (SFR*)&PORTD;
+      dataOutReg = (sfr_t*)&PORTD;
       break;
 #endif
     default:

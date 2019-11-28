@@ -41,7 +41,7 @@
 
 #define NULL    0
      
-typedef uint8_t SFR;
+typedef uint8_t sfr_t;
 
 #ifdef __cplusplus
 }
