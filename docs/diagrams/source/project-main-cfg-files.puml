@@ -1,0 +1,36 @@
+@startuml
+salt
+{
+  {
+    T
+    + Project folder
+    ++ config
+    +++ library-cfg
+    +++ mcu-cfg.h
+    +++ mcu-cfg.c
+    +++ irq-hander.c
+    ++ source
+    +++ gpio.h
+    +++ gpio.c
+    +++ adc.h
+    +++ adc.c
+    +++ usart.c
+    +++ usart.h
+    +++ i2c.h
+    +++ i2c.c
+    +++ spi.h
+    +++ spi.c
+    +++ timer0.h
+    +++ timer0.c
+    +++ timer1.h
+    +++ timer1.c
+    ++ project
+    +++ toolchain-folder.X
+    ++++ main.c
+    ++ library
+    +++ dependency library
+    +++ 3rd party library
+  }
+}
+
+@enduml
