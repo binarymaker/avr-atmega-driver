@@ -18,28 +18,30 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef USART_b5b7f24a_fb96_11e9_9a9d_0c5b8f279a64
-#define USART_b5b7f24a_fb96_11e9_9a9d_0c5b8f279a64
+#ifndef IRQ_HANDLER_9aed5eda_10ec_11ea_b559_705a0f25cb51
+#define IRQ_HANDLER_9aed5eda_10ec_11ea_b559_705a0f25cb51
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
+/**
+ * \brief Source file version tag
+ *        
+ *        version info: [15:8] main [7:0] beta
+ */
+#define __IRQ_HANDLER_VERSION      (0x0001u)
+
 /* Includes ------------------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-#define USART_BAUDRATE                                                   9600UL
-   
-#define USART_PRINTF_REDIRECT
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-void
-USART_Config();
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* USART_b5b7f24a_fb96_11e9_9a9d_0c5b8f279a64 */
+#endif /* IRQ_HANDLER_9aed5eda_10ec_11ea_b559_705a0f25cb51 */
 

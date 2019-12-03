@@ -25,32 +25,88 @@
  extern "C" {
 #endif
 
-/* Exported constants --------------------------------------------------------*/
-#define F_CPU                                                         8000000UL
-   
-#define MCU_GPIO_DRIVER                                                 ENABLE   
-#define MCU_ADC_DRIVER                                                  ENABLE
-#define MCU_UART_DRIVER                                                 ENABLE
-#define MCU_I2C_DRIVER                                                  ENABLE
-#define MCU_SPI_DRIVER                                                  ENABLE
-#define MCU_TIMER0_DRIVER                                               ENABLE
-#define MCU_TIMER1_DRIVER                                               ENABLE
-#define MCU_TIMER2_DRIVER                                               ENABLE
+#define F_CPU                                                        (8000000UL)
 
-/* Includes ------------------------------------------------------------------*/
-#include "mcu.h"
-   
-#include "pin-manager-cfg.h"
-#include "delay-cfg.h"
-#include "gpio-cfg.h"
-#include "adc-cfg.h"
-#include "usart-cfg.h"
-#include "i2c-cfg.h"
-#include "systimer-cfg.h"
-#include "timer0-cfg.h"
-/* Exported types ------------------------------------------------------------*/
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
+#define MCU_GPIO_DRIVER                                                  ENABLE 
+#define MCU_EXTERNAL_INTERRUPT_DRIVER                                    DISABLE
+#define MCU_ADC_DRIVER                                                   DISABLE
+#define MCU_USART_DRIVER                                                 DISABLE
+#define MCU_I2C_DRIVER                                                   DISABLE
+#define MCU_SPI_DRIVER                                                   DISABLE
+#define MCU_TIMER0_DRIVER                                                DISABLE
+#define MCU_TIMER1_DRIVER                                                DISABLE
+#define MCU_TIMER2_DRIVER                                                DISABLE
+
+#define IS_DRIVER_ENABLE(module)               (MCU_##module##_DRIVER == ENABLE)
+
+/* ############################# SYSTIMER DRIVER ############################ */
+
+#define MICROSECONDS_PER_SYSTIMER_OVERFLOW                               (2000U)
+
+/* ############################### GPIO DRIVER ############################## */
+
+#if IS_DRIVER_ENABLE(GPIO)
+
+#define GPIO_PIN_PER_PORT                                                   (8U)
+
+void
+GPIO_Config();
+
+#endif
+
+/* ################ EXTERNAL AND PIN CHANGE INTERRUPT DRIVER ################ */
+
+#if IS_DRIVER_ENABLE(EXTERNAL_INTERRUPT)
+
+void
+EXTERNAL_INTERRUPT_config(void);
+
+#endif
+
+/* ############################### ADC DRIVER ############################### */
+
+#if IS_DRIVER_ENABLE(ADC)
+
+void
+ADC_Config();
+
+#endif
+
+/* ############################## USART DRIVER ############################## */
+
+#if IS_DRIVER_ENABLE(USART)
+
+#define USART_BAUD_REG_CALC(baud)        (uint16_t)((F_CPU / (16 * (baud))) - 1)
+#define USART_BAUD_REG_2X_CALC(baud)      (uint16_t)((F_CPU / (8 * (baud))) - 1)
+
+void
+USART_Config();
+
+#endif
+
+/* ############################### I2C DRIVER ############################### */
+
+#if IS_DRIVER_ENABLE(I2C)
+
+#define I2C_STATUS_RETURN                                                DISABLE
+
+#define I2C_CLOCK_BITRATE_REG_CALC(i2cClkFreq, i2cPrescale)                    \
+                            ((F_CPU / ((i2cClkFreq) * (i2cPrescale)) - 16 ) / 2)
+void
+I2C_Config();
+
+#endif
+
+/* ############################## TIMER0 DRIVER ############################# */
+
+#if IS_DRIVER_ENABLE(TIMER0)
+
+void
+TIMER0_Config();
+
+#endif
+
+/* ########################################################################## */
 
 
 #ifdef __cplusplus

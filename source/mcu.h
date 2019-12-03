@@ -39,42 +39,33 @@
 #include "mcu-cfg.h"
 #include "regctrl.h"
 #include "common-def.h"
+#include "complier-cfg.h"
+#include "delay.h"
 
-#include "delay.h"   
-#include "pin-manager-cfg.h"
-
-#if MCU_GPIO_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(GPIO)
 #include "gpio.h"
 #endif
 
-#if MCU_UART_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(USART)
 #include "usart.h"
 #endif
 
-#if MCU_ADC_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(ADC)
 #include "adc.h"
 #endif
 
-#if MCU_I2C_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(I2C)
 #include "i2c.h"
 #endif
 
-#if MCU_SPI_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(SPI)
 #endif 
    
-#if MCU_TIMER0_DRIVER == ENABLE
+#if IS_DRIVER_ENABLE(TIMER0)
 #include "timer0.h"
 #endif 
 
 #include "systimer.h"
-#if MCU_TIMER1_DRIVER == ENABLE
-#endif 
-
-#if MCU_TIMER2_DRIVER == ENABLE
-#endif 
-    
- 
- 
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -82,9 +73,11 @@
 #define CLOCK_CYCLE_PER_MICROSECOND()                          (F_CPU / 1000000)
 #define CLOCK_CYCLE_TO_MICROSECONDS(clk) ((clk) / CLOCK_CYCLE_PER_MICROSECOND())
 #define MICROSECONDS_TO_CLOCK_CYCLE(us)   ((us) * CLOCK_CYCLE_PER_MICROSECOND())
-   
+
 #define _L_(pin)                                                            (0u)
 #define _H_(pin)                                                      BIT((pin))
+#define _I_(pin)                                                            (0u)
+#define _O_(pin)                                                      BIT((pin))
 /* Exported functions ------------------------------------------------------- */
 void
 MCU_Init();

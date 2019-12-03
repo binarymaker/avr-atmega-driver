@@ -30,8 +30,24 @@
 void
 MCU_Init()
 {
-  PIN_MANAGER_Config();
+#if IS_DRIVER_ENABLE(GPIO)
+  GPIO_Config();
+#endif
+
+#if IS_DRIVER_ENABLE(EXTERNAL_INTERRUPT)
+  EXTERNAL_INTERRUPT_config();
+#endif
+
+#if IS_DRIVER_ENABLE(ADC)
   ADC_Config();
+#endif
+  
+#if IS_DRIVER_ENABLE(USART)
   USART_Config();
+#endif
+
+#if IS_DRIVER_ENABLE(I2C)  
   I2C_Config();
+#endif
+
 }
