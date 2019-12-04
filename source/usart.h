@@ -45,7 +45,7 @@
 #if defined(USART_PRINTF_REDIRECT)
 #define USART_Printf(_F, ...)  {                                               \
                                 PRINT_OutFunction(USART_Write);                \
-                                PRINT_Printf((uint8_t*)(_F), __VA_ARGS__);     \
+                                PRINT_Printf((uint8_t*)(_F), ##__VA_ARGS__);   \
                                }
 #else
 #define USART_Printf(_F, ...)
