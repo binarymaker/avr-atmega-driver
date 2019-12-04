@@ -78,6 +78,9 @@
 #define _H_(pin)                                                      BIT((pin))
 #define _I_(pin)                                                            (0u)
 #define _O_(pin)                                                      BIT((pin))
+
+#define MCU_INTERRUPT_ENABLE()                                           (sei())
+#define MCU_INTERRUPT_DISABLE()                                          (cil())
 /* Exported functions ------------------------------------------------------- */
 void
 MCU_Init();
