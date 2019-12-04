@@ -44,7 +44,7 @@
 /* Exported macro ------------------------------------------------------------*/
 #if defined(USART_PRINTF_REDIRECT)
 #define USART_Printf(_F, ...)  {                                           \
-                                PRINT_ChannelSelect(PRINT_CHANNEL_USART);  \
+                                PRINT_OutFunction(USART_Write);            \
                                 PRINT_Printf((_F), __VA_ARGS__);           \
                                }
 #else
