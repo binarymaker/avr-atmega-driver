@@ -50,4 +50,8 @@ MCU_Init()
   I2C_Config();
 #endif
 
+#if IS_DRIVER_ENABLE(TIMER0)  
+  TIMER0_Config();
+#endif
+
 }
