@@ -27,3 +27,5 @@
 **/disassembly/
 *.map
 
+### Ceedling ###
+/test/**/build/**
