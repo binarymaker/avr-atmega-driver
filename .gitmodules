@@ -4,3 +4,7 @@
 [submodule "library/printf"]
 	path = library/printf
 	url = https://github.com/binarymaker/embedded-printf.git
+[submodule "library/embclib"]
+	path = library/embclib
+	url = https://github.com/binarymaker/embclib.git
+	branch = library
