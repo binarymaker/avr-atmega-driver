@@ -37,17 +37,151 @@ tearDown()
 }
 
 void
-test_PORTB_pin0_write_high()
+test_PORTB_pin_direction_input()
 {
-  GPIO_PinWrite(P_B0, HIGH);
-  TEST_ASSERT_EQUAL_UINT8(1, PORTB);
+  uint8_t bit_pos;
+
+  bit_pos = 0;
+  for (uint8_t pin_8u = P_B0; pin_8u <= P_B7; pin_8u++)
+  {
+    /* Ensure known test state
+     * Assign direction reg default high 
+     */
+    DDRB = 0xFF;
+
+    /* Setup expected function mock */
+
+    /* Function under test */
+    GPIO_PinDirection(pin_8u, GPIO_PIN_INPUT);
+
+    /* Verify test results */
+    TEST_ASSERT_EQUAL_INT8( ~BIT(bit_pos), DDRB);
+
+    bit_pos++;
+  }
 }
 
 void
-test_PORTB_pin2_write_high()
+test_PORTB_pin_direction_output()
 {
-  GPIO_PinWrite(P_B2, HIGH);
-  TEST_ASSERT_EQUAL_UINT8(BIT(2), PORTB);
+  uint8_t bit_pos;
+
+  bit_pos = 0;
+  for (uint8_t pin_8u = P_B0; pin_8u <= P_B7; pin_8u++)
+  {
+    /* Ensure known test state
+     * Assign direction reg default high 
+     */
+    DDRB = 0x00;
+
+    /* Setup expected function mock */
+
+    /* Function under test */
+    GPIO_PinDirection(pin_8u, GPIO_PIN_OUTPUT);
+
+    /* Verify test results */
+    TEST_ASSERT_EQUAL_INT8(BIT(bit_pos), DDRB);
+
+    bit_pos++;
+  }
 }
 
+void
+test_PORTB_pin_output_write_high()
+{
+  uint8_t bit_pos;
 
+  bit_pos = 0;
+  for (uint8_t pin_8u = P_B0; pin_8u <= P_B7; pin_8u++)
+  {
+    /* Ensure known test state
+     * Assign direction reg default high 
+     */
+    PORTB = 0x00;
+
+    /* Setup expected function mock */
+
+    /* Function under test */
+    GPIO_PinWrite(pin_8u, HIGH);
+
+    /* Verify test results */
+    TEST_ASSERT_EQUAL_INT8(BIT(bit_pos), PORTB);
+
+    bit_pos++;
+  }
+}
+
+void
+test_PORTB_pin_output_write_low()
+{
+  uint8_t bit_pos;
+
+  bit_pos = 0;
+  for (uint8_t pin_8u = P_B0; pin_8u <= P_B7; pin_8u++)
+  {
+    /* Ensure known test state
+     * Assign direction reg default high 
+     */
+    PORTB = 0xFF;
+
+    /* Setup expected function mock */
+
+    /* Function under test */
+    GPIO_PinWrite(pin_8u, LOW);
+
+    /* Verify test results */
+    TEST_ASSERT_EQUAL_INT8( ~BIT(bit_pos), PORTB);
+
+    bit_pos++;
+  }
+}
+
+void
+test_PORTB_pin_output_read_high()
+{
+  uint8_t bit_pos;
+
+  bit_pos = 0;
+  for (uint8_t pin_8u = P_B0; pin_8u <= P_B7; pin_8u++)
+  {
+    /* Ensure known test state
+     * Assign direction reg default high 
+     */
+    PINB = 0xFF;
+
+    /* Setup expected function mock */
+
+    /* Function under test */
+    bool_et pin_value_b = GPIO_PinRead(pin_8u);
+
+    /* Verify test results */
+    TEST_ASSERT_EQUAL(HIGH, pin_value_b);
+
+    bit_pos++;
+  }
+}
+
+void
+test_PORTB_pin_output_read_low()
+{
+  uint8_t bit_pos;
+
+  bit_pos = 0;
+  for (uint8_t pin_8u = P_B0; pin_8u <= P_B7; pin_8u++)
+  {
+    /* Ensure known test state
+     * Assign direction reg default high 
+     */
+    PINB = 0x00;
+
+    /* Setup expected function mock */
+
+    /* Function under test */
+    bool_et pin_value_b = GPIO_PinRead(pin_8u);
+
+    /* Verify test results */
+    TEST_ASSERT_EQUAL(LOW, pin_value_b);
+
+    bit_pos++;
+  }
+}
