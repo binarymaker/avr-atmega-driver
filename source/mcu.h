@@ -35,8 +35,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "mcu-cfg.h"
 #include <avr/io.h>
+#ifndef TEST
 #include <util/delay.h>
 #include <avr/interrupt.h>
+#endif
 #include "stdint.h"
 #include "regctrl.h"
 #include "common-def.h"

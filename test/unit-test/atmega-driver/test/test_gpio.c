@@ -19,11 +19,15 @@
   */
 
 #include "unity.h"
+#include "mcu.h"
+
+#include "mcu-cfg.h"
+#include "gpio.h"
 
 void
 setUp()
 {
-
+  PORTB = 0x00;
 }
 
 void
@@ -33,9 +37,17 @@ tearDown()
 }
 
 void
-test_hello()
+test_PORTB_pin0_write_high()
 {
-
-  TEST_ASSERT_EQUAL(89, 89);
+  GPIO_PinWrite(P_B0, HIGH);
+  TEST_ASSERT_EQUAL_UINT8(1, PORTB);
 }
+
+void
+test_PORTB_pin2_write_high()
+{
+  GPIO_PinWrite(P_B2, HIGH);
+  TEST_ASSERT_EQUAL_UINT8(BIT(2), PORTB);
+}
+
 
