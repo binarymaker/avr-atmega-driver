@@ -30,7 +30,7 @@
 
 /* avr/sfr_defs.h - macros for accessing AVR special function registers */
 
-/* $Id: sfr_defs.h,v 1.18.2.1 2008/04/28 22:05:42 arcanum Exp $ */
+/* $Id$ */
 
 #ifndef _AVR_SFR_DEFS_H_
 #define _AVR_SFR_DEFS_H_ 1
@@ -87,9 +87,9 @@
 
 \code
 #if _SFR_IO_REG_P(SPMCR)
-  out _SFR_IO_ADDR(SPMCR), r24
+	out	_SFR_IO_ADDR(SPMCR), r24
 #else
-  sts _SFR_MEM_ADDR(SPMCR), r24
+	sts	_SFR_MEM_ADDR(SPMCR), r24
 #endif
 \endcode
 
@@ -107,7 +107,7 @@
    (defined only if <tt>__SFR_OFFSET</tt> == 0x20) for safety:
 
 \code
-  sts _SFR_ADDR(SPMCR), r24
+	sts	_SFR_ADDR(SPMCR), r24
 \endcode
 
    In C programs, all 3 combinations of \c _SFR_ASM_COMPAT and
