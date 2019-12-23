@@ -86,6 +86,15 @@
 # As [:tools] is blank, gcc will be used (so long as it's in your system path)
 # See documentation to configure a given toolchain for use
 
+:flags:
+  :test:
+    :compile:
+      :*:
+        - -std=c99
+        - -Wall
+        - -Wno-tautological-pointer-compare # Cmock may create these, so ignore
+        - -Werror
+        
 # LIBRARIES
 # These libraries are automatically injected into the build process. Those specified as
 # common will be used in all types of builds. Otherwise, libraries can be injected in just
