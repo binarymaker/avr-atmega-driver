@@ -65,7 +65,10 @@ GPIO_PinDirection(pin_et pin, pinDirection_et dir)
       break;
   }
   
-  BIT_Write(*directionReg, WHICH_PIN(pin), dir);
+  if (directionReg)
+  {
+    BIT_Write(*directionReg, WHICH_PIN(pin), dir);
+  }
   
 }
 
@@ -103,7 +106,10 @@ GPIO_PinWrite(pin_et pin, state_et state)
       break;
   }
   
-  BIT_Write(*dataOutReg, WHICH_PIN(pin), state);
+  if (dataOutReg)
+  {
+    BIT_Write(*dataOutReg, WHICH_PIN(pin), state);
+  }
 }
 
 state_et
@@ -141,7 +147,10 @@ GPIO_PinRead(pin_et pin)
       break;
   }
   
-  pinState = BIT_Read(*dataInReg, WHICH_PIN(pin));
+  if (dataInReg)
+  {
+    pinState = BIT_Read(*dataInReg, WHICH_PIN(pin));
+  }
   
   return (pinState);
 }
@@ -180,5 +189,8 @@ GPIO_PinToggle(pin_et pin)
       break;
   }
   
-  BIT_Toggle(*dataOutReg, WHICH_PIN(pin));
+  if (dataOutReg)
+  {
+    BIT_Toggle(*dataOutReg, WHICH_PIN(pin));
+  }
 }
