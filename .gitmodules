@@ -8,3 +8,7 @@
 	path = library/embclib
 	url = https://github.com/binarymaker/embclib.git
 	branch = library
+[submodule "library/logger"]
+	path = library/logger
+	url = https://github.com/binarymaker/embedded-diagnostic-logger.git
+	branch = library
