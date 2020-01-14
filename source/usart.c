@@ -25,6 +25,9 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+#if USART_BUFFER_STACK == ENABLE
+circularBuffer_st * m_cb_rx_svptr;
+#endif
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -41,3 +44,20 @@ USART_Read()
   while ( BIT_IsClear(UCSR0A, RXC0) );
   return (REG_Read(UDR0));
 }
+
+#if USART_BUFFER_STACK == ENABLE
+
+void
+USART_BufferLink(circularBuffer_st * cirbuf_svptr)
+{
+  m_cb_rx_svptr = cirbuf_svptr;
+}
+
+void
+USART_BufferEngin()
+{
+  uint8_t read_byte_u8 = REG_Read(UDR0);
+  CIRCULAR_BUFFER_Write(m_cb_rx_svptr, read_byte_u8);
+}
+
+#endif

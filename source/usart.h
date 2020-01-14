@@ -35,6 +35,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
 
+#if USART_BUFFER_STACK == ENABLE
+#include "circular-buffer.h"
+#endif
+
 #if defined(USART_PRINTF_REDIRECT)
 #include "print.h"
 #endif
@@ -59,6 +63,15 @@ USART_Write(uint8_t ch);
 uint8_t
 USART_Read();
 
+#if USART_BUFFER_STACK == ENABLE
+
+void
+USART_BufferLink(circularBuffer_st * cirbuf_svptr);
+
+void
+USART_BufferEngin();
+
+#endif
 
 #ifdef __cplusplus
 }
