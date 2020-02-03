@@ -42,7 +42,7 @@ Pin map
                   (PCINT16/RXD) PD0 |2       27| PC4 (ADC4/SDA/PCINT12)
                   (PCINT17/TXD) PD1 |3   A   26| PC3 (ADC3/PCINT11)
                  (PCINT18/INT0) PD2 |4   T   25| PC2 (ADC2/PCINT10)
-            (PCINT19/OC2B/INT1) PD3  5   M   24| PC1 (ADC1/PCINT9)
+            (PCINT19/OC2B/INT1) PD3 |5   M   24| PC1 (ADC1/PCINT9)
                (PCINT20/XCK/T0) PD4 |6   E   23| PC0 (ADC0/PCINT8)
                                 VCC |7   G   22| GND
                                 GND |8   A   21| AREF
