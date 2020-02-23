@@ -106,7 +106,9 @@ I2C_Read(uint8_t* data, i2c_ack_et ack)
   }
 
   while ( BIT_IsClear(TWCR, TWINT) );
-
+  
+  *data = TWDR;
+  
 #if (I2C_STATUS_RETURN == ENABLE)
   switch (TW_STATUS)
   {
